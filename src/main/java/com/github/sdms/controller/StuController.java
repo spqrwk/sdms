@@ -32,7 +32,9 @@ public class StuController {
     public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode, Model model) {
         Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, paymentDeadline, aptName, tchName, clazzCode);
         model.addAttribute("pageBean", pageBean);
-
+        model.addAttribute("aptName",aptName);
+        model.addAttribute("tchName",tchName);
+        model.addAttribute("clazzCode",clazzCode);
         return "stulist";
     }
 

@@ -438,7 +438,7 @@ MAIN CONTENT LAYOUT
                     <div class="block-header block-header-default">
                         <div class="block-content block-content-full">
                             <form class="form-inline" action="${realPath}/tch/list" method="post">
-                                    <input type="hidden" name="p" value="${pageBean.currentPage}" />
+                                    <input type="hidden" name="p" value="1" />
                                 <label class="sr-only" for="example-if-email">Email</label>
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="tchName" placeholder="请输入班主任姓名..." value="${tchName}">
                                 <button type="submit" class="btn btn-alt-primary">查询</button>

@@ -89,35 +89,35 @@ MAIN CONTENT LAYOUT
 -->
 <div id="page-container" class="sidebar-mini sidebar-o sidebar-inverse enable-page-overlay side-scroll page-header-fixed page-header-glass page-header-inverse main-content-boxed">
     <!-- Side Overlay-->
-<%--    <aside id="side-overlay">--%>
-<%--        <!-- Side Header -->--%>
-<%--        <div class="content-header content-header-fullrow">--%>
-<%--            <div class="content-header-section align-parent">--%>
-<%--                <!-- Close Side Overlay -->--%>
-<%--                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--%>
-<%--                <button type="button" class="btn btn-circle btn-dual-secondary align-v-r" data-toggle="layout" data-action="side_overlay_close">--%>
-<%--                    <i class="fa fa-times text-danger"></i>--%>
-<%--                </button>--%>
-<%--                <!-- END Close Side Overlay -->--%>
+    <%--    <aside id="side-overlay">--%>
+    <%--        <!-- Side Header -->--%>
+    <%--        <div class="content-header content-header-fullrow">--%>
+    <%--            <div class="content-header-section align-parent">--%>
+    <%--                <!-- Close Side Overlay -->--%>
+    <%--                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--%>
+    <%--                <button type="button" class="btn btn-circle btn-dual-secondary align-v-r" data-toggle="layout" data-action="side_overlay_close">--%>
+    <%--                    <i class="fa fa-times text-danger"></i>--%>
+    <%--                </button>--%>
+    <%--                <!-- END Close Side Overlay -->--%>
 
-<%--                <!-- User Info -->--%>
-<%--                <div class="content-header-item">--%>
-<%--                    <a class="img-link mr-5" href="${realPath}/user/view">--%>
-<%--                        <img class="img-avatar img-avatar32" src="${realPath}/statics/assets/media/avatars/avatar15.jpg" alt="">--%>
-<%--                    </a>--%>
-<%--                    <a class="align-middle link-effect text-primary-dark font-w600" href="${realPath}/user/view">John Smith</a>--%>
-<%--                </div>--%>
-<%--                <!-- END User Info -->--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--        <!-- END Side Header -->--%>
+    <%--                <!-- User Info -->--%>
+    <%--                <div class="content-header-item">--%>
+    <%--                    <a class="img-link mr-5" href="${realPath}/user/view">--%>
+    <%--                        <img class="img-avatar img-avatar32" src="${realPath}/statics/assets/media/avatars/avatar15.jpg" alt="">--%>
+    <%--                    </a>--%>
+    <%--                    <a class="align-middle link-effect text-primary-dark font-w600" href="${realPath}/user/view">John Smith</a>--%>
+    <%--                </div>--%>
+    <%--                <!-- END User Info -->--%>
+    <%--            </div>--%>
+    <%--        </div>--%>
+    <%--        <!-- END Side Header -->--%>
 
-<%--        <!-- Side Content -->--%>
-<%--        <div class="content-side">--%>
+    <%--        <!-- Side Content -->--%>
+    <%--        <div class="content-side">--%>
 
-<%--        </div>--%>
-<%--        <!-- END Side Content -->--%>
-<%--    </aside>--%>
+    <%--        </div>--%>
+    <%--        <!-- END Side Content -->--%>
+    <%--    </aside>--%>
     <!-- END Side Overlay -->
 
     <!-- Sidebar -->
@@ -281,19 +281,6 @@ MAIN CONTENT LAYOUT
         <div class="content-header">
             <!-- Left Section -->
             <div class="content-header-section">
-                <!-- Toggle Sidebar -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
-                    <i class="fa fa-navicon"></i>
-                </button>
-                <!-- END Toggle Sidebar -->
-
-                <!-- Open Search Section -->
-                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="header_search_on">
-                    <i class="fa fa-search"></i>
-                </button>
-                <!-- END Open Search Section -->
 
                 <!-- Layout Options (used just for demonstration) -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -401,9 +388,9 @@ MAIN CONTENT LAYOUT
 
                 <!-- Toggle Side Overlay -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-<%--                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">--%>
-<%--                    <i class="fa fa-tasks"></i>--%>
-<%--                </button>--%>
+                <%--                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">--%>
+                <%--                    <i class="fa fa-tasks"></i>--%>
+                <%--                </button>--%>
                 <!-- END Toggle Side Overlay -->
             </div>
             <!-- END Right Section -->
@@ -411,28 +398,7 @@ MAIN CONTENT LAYOUT
         <!-- END Header Content -->
 
         <!-- Header Search -->
-        <div id="page-header-search" class="overlay-header">
-            <div class="content-header content-header-fullrow">
-                <form action="be_pages_generic_search.html" method="post">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <!-- Close Search Section -->
-                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                            <button type="button" class="btn btn-secondary" data-toggle="layout" data-action="header_search_off">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <!-- END Close Search Section -->
-                        </div>
-                        <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
+
         <!-- END Header Search -->
 
         <!-- Header Loader -->
@@ -472,10 +438,11 @@ MAIN CONTENT LAYOUT
                     <div class="block-header block-header-default">
                         <div class="block-content block-content-full">
                             <form class="form-inline" action="${realPath}/user/list" method="post">
+                                <input type="hidden" name="p" value="1"/>
                                 <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="userCode" placeholder="请输入用户编号..." value="">
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="userCode" placeholder="请输入用户编号..." value="${clazzCode}">
                                 <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="username" placeholder="请输入昵称..." value="">
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="username" placeholder="请输入昵称..." value="${username}">
                                 <button type="submit" class="btn btn-alt-primary">查询</button>
                             </form>
                         </div>
@@ -514,7 +481,6 @@ MAIN CONTENT LAYOUT
             </div>
         </div>
         <!-- END Page Content -->
-
     </main>
     <!-- END Main Container -->
 
@@ -565,6 +531,6 @@ MAIN CONTENT LAYOUT
 
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
-
+<script src="${realPath}/statics/js/rollpage.js"></script>
 </body>
 </html>

@@ -35,7 +35,7 @@
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
     <link rel="stylesheet" id="css-main" href="${realPath}/statics/assets/css/codebase.min.css">
-
+    <link href="${realPath}/statics/assets/css/style.css" rel="stylesheet" />
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="${realPath}/statics/assets/css/themes/flat.min.css"> -->
     <!-- END Stylesheets -->
@@ -397,30 +397,6 @@ MAIN CONTENT LAYOUT
         </div>
         <!-- END Header Content -->
 
-        <!-- Header Search -->
-        <div id="page-header-search" class="overlay-header">
-            <div class="content-header content-header-fullrow">
-                <form action="be_pages_generic_search.html" method="post">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <!-- Close Search Section -->
-                            <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                            <button type="button" class="btn btn-secondary" data-toggle="layout" data-action="header_search_off">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <!-- END Close Search Section -->
-                        </div>
-                        <input type="text" class="form-control" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- END Header Search -->
 
         <!-- Header Loader -->
         <!-- Please check out the Activity page under Elements category to see examples of showing/hiding it -->
@@ -453,10 +429,8 @@ MAIN CONTENT LAYOUT
 
         <!-- Page Content -->
         <div class="content">
-            <div class="pt-50 pb-20">
-                <h1 class="font-w700 text-white mb-10 invisible" data-toggle="appear" data-class="animated fadeInUp">${loginUser.username}</h1>
-                <h2 class="h4 font-w400 text-white-op invisible" data-toggle="appear" data-class="animated fadeInUp">主体部分</h2>
-            </div>
+
+
         </div>
         <!-- END Page Content -->
 
@@ -510,6 +484,8 @@ MAIN CONTENT LAYOUT
 
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
-
+<script src="${realPath}/statics/assets/js/jquery-1.9.1.min.js"></script>
+<script src="${realPath}/statics/assets/js/moment.min.js"></script>
+<script src="${realPath}/statics/assets/js/script.js"></script>
 </body>
 </html>
