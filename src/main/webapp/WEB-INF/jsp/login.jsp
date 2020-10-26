@@ -96,9 +96,9 @@ MAIN CONTENT LAYOUT
             <div class="row mx-0 bg-black-op">
                 <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                     <div class="p-30 invisible" data-toggle="appear">
-                        <p class="font-size-h3 font-w600 text-white">
+                        <a class="font-size-h3 font-w600 text-white" href="https://github.com/spqrwk/sdms">
                             https://github.com/spqrwk/sdms
-                        </p>
+                        </a>
                         <p class="font-italic text-white-op">
                             Copyright &copy; <span class="js-year-copy">2020</span>
                         </p>
