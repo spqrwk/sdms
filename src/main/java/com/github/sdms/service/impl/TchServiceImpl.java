@@ -3,10 +3,14 @@ package com.github.sdms.service.impl;
 import com.github.sdms.dao.TchDao;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.TchService;
+import com.github.sdms.util.Page;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 班主任信息(Tch)表服务实现类
@@ -26,20 +30,32 @@ public class TchServiceImpl implements TchService {
      * @return 实例对象
      */
     @Override
-    public Tch queryById(Long id) {
+    public Tch queryById(@Param("id") Long id) {
         return this.tchDao.queryById(id);
     }
 
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
+
      * @return 对象列表
      */
     @Override
-    public List<Tch> queryAllByLimit(int offset, int limit) {
-        return this.tchDao.queryAllByLimit(offset, limit);
+    public Page<Tch> queryAllByLimit(Integer currentPage, String tchName) {
+        Page<Tch> pageBean = new Page<>(currentPage);
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("tchName", tchName);
+
+        int totalCount = tchDao.countByLimit(params);
+        pageBean.setTotalCount(totalCount);
+
+        params.put("startIndex", pageBean.getStartIndex());
+        params.put("pageSize", pageBean.getPageSize());
+        List<Tch> tchList = tchDao.queryAllByLimit(params);
+        pageBean.setRows(tchList);
+
+        return pageBean;
     }
 
     /**
@@ -49,9 +65,8 @@ public class TchServiceImpl implements TchService {
      * @return 实例对象
      */
     @Override
-    public Tch insert(Tch tch) {
+    public void insert(Tch tch) {
         this.tchDao.insert(tch);
-        return tch;
     }
 
     /**
@@ -61,9 +76,8 @@ public class TchServiceImpl implements TchService {
      * @return 实例对象
      */
     @Override
-    public Tch update(Tch tch) {
+    public void update(Tch tch) {
         this.tchDao.update(tch);
-        return this.queryById(tch.getId());
     }
 
     /**
@@ -73,7 +87,7 @@ public class TchServiceImpl implements TchService {
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Long id) {
-        return this.tchDao.deleteById(id) > 0;
+    public void deleteById(Long id) {
+        tchDao.deleteById(id);
     }
 }

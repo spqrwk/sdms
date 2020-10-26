@@ -1,6 +1,7 @@
 package com.github.sdms.service;
 
 import com.github.sdms.entity.Tch;
+import com.github.sdms.util.Page;
 
 import java.util.List;
 
@@ -23,11 +24,9 @@ public interface TchService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    List<Tch> queryAllByLimit(int offset, int limit);
+    Page<Tch> queryAllByLimit(Integer currentPage, String tchName);
 
     /**
      * 新增数据
@@ -35,7 +34,7 @@ public interface TchService {
      * @param tch 实例对象
      * @return 实例对象
      */
-    Tch insert(Tch tch);
+    void insert(Tch tch);
 
     /**
      * 修改数据
@@ -43,7 +42,7 @@ public interface TchService {
      * @param tch 实例对象
      * @return 实例对象
      */
-    Tch update(Tch tch);
+    void update(Tch tch);
 
     /**
      * 通过主键删除数据
@@ -51,6 +50,6 @@ public interface TchService {
      * @param id 主键
      * @return 是否成功
      */
-    boolean deleteById(Long id);
+    void deleteById(Long id);
 
 }

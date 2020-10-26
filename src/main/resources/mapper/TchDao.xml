@@ -18,28 +18,34 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="TchMap">
-        select
-          id, name, clazz_id
-        from sdmsdb.sdms_tch
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="TchMap">
-        select
-        id, name, clazz_id
-        from sdmsdb.sdms_tch
+        SELECT
+            *
+        FROM
+            sdms_tch AS st
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="name != null and name != ''">
-                and name = #{name}
-            </if>
-            <if test="clazzId != null">
-                and clazz_id = #{clazzId}
+            <if test="tchName != null and tchName != ''">
+                AND st.name LIKE CONCAT('%',#{tchName},'%')
             </if>
         </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
+    </select>
+
+    <!--根据条件查询记录数-->
+    <select id="countByLimit" parameterType="map" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_tch AS st
+        <where>
+            <if test="tchName != null and tchName != ''">
+                AND st.name LIKE CONCAT('%',#{tchName},'%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--新增所有列-->
@@ -48,15 +54,15 @@
         values (#{name}, #{clazzId})
     </insert>
 
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+<!--    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
         insert into sdmsdb.sdms_tch(name, clazz_id)
         values
         <foreach collection="entities" item="entity" separator=",">
             (#{entity.name}, #{entity.clazzId})
         </foreach>
-    </insert>
+    </insert>-->
 
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+<!--    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
         insert into sdmsdb.sdms_tch(name, clazz_id)
         values
         <foreach collection="entities" item="entity" separator=",">
@@ -64,7 +70,7 @@
         </foreach>
         on duplicate key update
         name = values(name) , clazz_id = values(clazz_id)
-    </insert>
+    </insert>-->
 
     <!--通过主键修改数据-->
     <update id="update">
