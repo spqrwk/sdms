@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-    <title>Codebase - Bootstrap 4 Admin Template &amp; UI Framework</title>
+    <title>学生宿舍管理系统</title>
 
     <meta name="description" content="Codebase - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
     <meta name="author" content="pixelcave">
@@ -97,10 +97,10 @@ MAIN CONTENT LAYOUT
                 <div class="hero-static col-md-6 col-xl-8 d-none d-md-flex align-items-md-end">
                     <div class="p-30 invisible" data-toggle="appear">
                         <p class="font-size-h3 font-w600 text-white">
-                            Get Inspired and Create.
+                            https://github.com/spqrwk/sdms
                         </p>
                         <p class="font-italic text-white-op">
-                            Copyright &copy; <span class="js-year-copy">2017</span>
+                            Copyright &copy; <span class="js-year-copy">2020</span>
                         </p>
                     </div>
                 </div>
@@ -108,12 +108,12 @@ MAIN CONTENT LAYOUT
                     <div class="content content-full">
                         <!-- Header -->
                         <div class="px-30 py-10">
-                            <a class="link-effect font-w700" href="index.html">
+                            <a class="link-effect font-w700" href="${realPath}/dologout">
                                 <i class="si si-fire"></i>
-                                <span class="font-size-xl text-primary-dark">code</span><span class="font-size-xl">base</span>
+                                <span class="font-size-xl text-primary-dark">SD</span><span class="font-size-xl">MS</span>
                             </a>
-                            <h1 class="h3 font-w700 mt-30 mb-10">Welcome to Your Dashboard</h1>
-                            <h2 class="h5 font-w400 text-muted mb-0">Please sign in</h2>
+                            <h1 class="h3 font-w700 mt-30 mb-10">欢迎使用学生宿舍管理系统</h1>
+                            <h2 class="h5 font-w400 text-muted mb-0">请使用账号密码登录</h2>
                         </div>
                         <!-- END Header -->
 
@@ -126,7 +126,7 @@ MAIN CONTENT LAYOUT
                                 <div class="col-12">
                                     <div class="form-material floating">
                                         <input type="text" class="form-control" id="login-username" name="code">
-                                        <label for="login-username">Username</label>
+                                        <label for="login-username">用户名</label>
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +134,7 @@ MAIN CONTENT LAYOUT
                                 <div class="col-12">
                                     <div class="form-material floating">
                                         <input type="password" class="form-control" id="login-password" name="pwd">
-                                        <label for="login-password">Password</label>
+                                        <label for="login-password">密码</label>
                                     </div>
                                 </div>
                             </div>
