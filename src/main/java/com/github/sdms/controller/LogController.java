@@ -8,20 +8,36 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
-@RequestMapping("log")
 public class LogController {
     @Autowired
      private UserService userService;
 
-    @RequestMapping("login")
-    public String login(String code,String pwd){
+    @RequestMapping("/dologout")
+    public String doLogout(HttpSession session) {
+        session.removeAttribute("loginUser");
+        return "redirect:/";
+    }
+
+    @RequestMapping("main")
+    public String toindex(){
+        return "index";
+    }
+
+
+    @RequestMapping("dologin")
+    public String login(String code, String pwd, HttpServletRequest request,HttpSession session){
         User user = userService.queryByCode(code);
         if (EmptyUtils.isNotEmpty(user)){
             if (pwd.equals(user.getPassword())){
-                return "登陆成功";
+                session.setAttribute("loginUser",user);
+                return "redirect:/main";
             }
         }
-        return "登录失败";
+        request.setAttribute("loginError","账号或密码错误");
+        return "login";
     }
 }
