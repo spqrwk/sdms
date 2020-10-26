@@ -18,52 +18,41 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="ClazzMap">
-        select
-          id, code, tch_id
-        from sdmsdb.sdms_clazz
-        limit #{offset}, #{limit}
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="ClazzMap">
-        select
-        id, code, tch_id
-        from sdmsdb.sdms_clazz
+        SELECT
+            sc.*, st.name AS tchName
+        FROM
+            sdms_clazz AS sc
+        LEFT JOIN sdms_tch AS st ON sc.tch_id = st.id
         <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="code != null and code != ''">
-                and code = #{code}
-            </if>
-            <if test="tchId != null">
-                and tch_id = #{tchId}
+            <if test="clazzCode != null and clazzCode != ''">
+                AND sc.code LIKE CONCAT('%', #{clazzCode}, '%')
             </if>
         </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
+    </select>
+
+    <select id="countByLimit" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_clazz AS sc
+        LEFT JOIN sdms_tch AS st ON sc.tch_id = st.id
+        <where>
+            <if test="clazzCode != null and clazzCode != ''">
+                AND sc.code LIKE CONCAT('%', #{clazzCode}, '%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         insert into sdmsdb.sdms_clazz(code, tch_id)
         values (#{code}, #{tchId})
-    </insert>
-
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_clazz(code, tch_id)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.tchId})
-        </foreach>
-    </insert>
-
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_clazz(code, tch_id)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.tchId})
-        </foreach>
-        on duplicate key update
-        code = values(code) , tch_id = values(tch_id)
     </insert>
 
     <!--通过主键修改数据-->

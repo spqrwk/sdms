@@ -1,6 +1,7 @@
 package com.github.sdms.service;
 
 import com.github.sdms.entity.Dorm;
+import com.github.sdms.util.Page;
 
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  * 宿舍信息(Dorm)表服务接口
  *
  * @author makejava
- * @since 2020-10-26 10:25:38
+ * @since 2020-10-26 16:46:40
  */
 public interface DormService {
 
@@ -22,12 +23,9 @@ public interface DormService {
 
     /**
      * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    List<Dorm> queryAllByLimit(int offset, int limit);
+    Page<Dorm> queryAllByLimit(Integer currentPage, String dormCode, String aptName);
 
     /**
      * 新增数据

@@ -1412,7 +1412,7 @@ MAIN CONTENT LAYOUT
                     <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                         <thead>
                         <tr>
-                            <th class="text-center"></th>
+                            <th class="text-center">序号</th>
                             <th class="d-none d-sm-table-cell">姓名</th>
 <%--
                             <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>

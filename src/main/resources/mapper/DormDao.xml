@@ -6,31 +6,42 @@
         <result property="id" column="id" jdbcType="INTEGER"/>
         <result property="code" column="code" jdbcType="VARCHAR"/>
         <result property="monthlyRent" column="monthly_rent" jdbcType="INTEGER"/>
-        <result property="aptName" column="apt_name" jdbcType="INTEGER"/>
-        <result property="dormMax" column="dorm_max" jdbcType="INTEGER"/>
-        <result property="dormCurrent" column="dorm_current" jdbcType="INTEGER"/>
+        <result property="aptName" column="apt_name" jdbcType="VARCHAR"/>
+        <result property="tenantLimit" column="tenant_limit" jdbcType="INTEGER"/>
+        <result property="currentTenant" column="current_tenant" jdbcType="INTEGER"/>
     </resultMap>
 
     <!--查询单个-->
     <select id="queryById" resultMap="DormMap">
         select
-          id, code, monthly_rent, apt_name, dorm_max, dorm_current
+          id, code, monthly_rent, apt_name, tenant_limit, current_tenant
         from sdmsdb.sdms_dorm
         where id = #{id}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="DormMap">
-        select
-          id, code, monthly_rent, apt_name, dorm_max, dorm_current
-        from sdmsdb.sdms_dorm
-        limit #{offset}, #{limit}
+        SELECT
+            *
+        FROM
+            sdms_dorm sd
+        <where>
+            <if test="dormCode != null and dormCode != ''">
+                AND sd.code LIKE CONCAT('%', #{dormCode}, '%')
+            </if>
+            <if test="aptName != null and aptName != ''">
+                AND sd.apt_name LIKE CONCAT('%', #{aptName}, '%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
-
-    <!--通过实体作为筛选条件查询-->
+<!--
+    &lt;!&ndash;通过实体作为筛选条件查询&ndash;&gt;
     <select id="queryAll" resultMap="DormMap">
         select
-        id, code, monthly_rent, apt_name, dorm_max, dorm_current
+        id, code, monthly_rent, apt_name, tenant_limit, current_tenant
         from sdmsdb.sdms_dorm
         <where>
             <if test="id != null">
@@ -42,41 +53,59 @@
             <if test="monthlyRent != null">
                 and monthly_rent = #{monthlyRent}
             </if>
-            <if test="aptName != null">
+            <if test="aptName != null and aptName != ''">
                 and apt_name = #{aptName}
             </if>
-            <if test="dormMax != null">
-                and dorm_max = #{dormMax}
+            <if test="tenantLimit != null">
+                and tenant_limit = #{tenantLimit}
             </if>
-            <if test="dormCurrent != null">
-                and dorm_current = #{dormCurrent}
+            <if test="currentTenant != null">
+                and current_tenant = #{currentTenant}
             </if>
         </where>
+    </select>-->
+
+    <select id="countByLimit" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_dorm sd
+        <where>
+            <if test="dormCode != null and dormCode != ''">
+                AND sd.code LIKE CONCAT('%', #{dormCode}, '%')
+            </if>
+            <if test="aptName != null and aptName != ''">
+                AND sd.apt_name LIKE CONCAT('%', #{aptName}, '%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, dorm_max, dorm_current)
-        values (#{code}, #{monthlyRent}, #{aptName}, #{dormMax}, #{dormCurrent})
+        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
+        values (#{code}, #{monthlyRent}, #{aptName}, #{tenantLimit}, #{currentTenant})
     </insert>
 
     <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, dorm_max, dorm_current)
+        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.dormMax}, #{entity.dormCurrent})
+            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.tenantLimit}, #{entity.currentTenant})
         </foreach>
     </insert>
 
     <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, dorm_max, dorm_current)
+        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.dormMax}, #{entity.dormCurrent})
+            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.tenantLimit}, #{entity.currentTenant})
         </foreach>
         on duplicate key update
-        code = values(code) , monthly_rent = values(monthly_rent) , apt_name = values(apt_name) , dorm_max =
-        values(dorm_max) , dorm_current = values(dorm_current)
+        code = values(code) , monthly_rent = values(monthly_rent) , apt_name = values(apt_name) , tenant_limit =
+        values(tenant_limit) , current_tenant = values(current_tenant)
     </insert>
 
     <!--通过主键修改数据-->
@@ -89,14 +118,14 @@
             <if test="monthlyRent != null">
                 monthly_rent = #{monthlyRent},
             </if>
-            <if test="aptName != null">
+            <if test="aptName != null and aptName != ''">
                 apt_name = #{aptName},
             </if>
-            <if test="dormMax != null">
-                dorm_max = #{dormMax},
+            <if test="tenantLimit != null">
+                tenant_limit = #{tenantLimit},
             </if>
-            <if test="dormCurrent != null">
-                dorm_current = #{dormCurrent},
+            <if test="currentTenant != null">
+                current_tenant = #{currentTenant},
             </if>
         </set>
         where id = #{id}

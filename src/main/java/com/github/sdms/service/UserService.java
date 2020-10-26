@@ -1,6 +1,7 @@
 package com.github.sdms.service;
 
 import com.github.sdms.entity.User;
+import com.github.sdms.util.Page;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public interface UserService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    Page<User> queryAllByLimit(Integer currentPage, String userCode, String username);
 
     /**
      * 新增数据
