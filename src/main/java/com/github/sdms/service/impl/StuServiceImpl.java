@@ -2,10 +2,13 @@ package com.github.sdms.service.impl;
 
 import com.github.sdms.dao.StuDao;
 import com.github.sdms.entity.Stu;
+import com.github.sdms.entity.Tch;
 import com.github.sdms.service.StuService;
+import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,13 +36,28 @@ public class StuServiceImpl implements StuService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
-    public List<Stu> queryAllByLimit(int offset, int limit) {
-        return this.stuDao.queryAllByLimit(offset, limit);
+    public Page<Stu> queryAllByLimit(Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode){
+        Page<Stu> pageBean = new Page<>(currentPage);
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("paymentDeadline", paymentDeadline);
+        params.put("aptName", aptName);
+        params.put("tchName", tchName);
+        params.put("clazzCode", clazzCode);
+
+        int totalCount = stuDao.countByLimit(params);
+        pageBean.setTotalCount(totalCount);
+
+        params.put("startIndex", pageBean.getStartIndex());
+        params.put("pageSize", pageBean.getPageSize());
+        List<Stu> stuList = stuDao.queryAllByLimit(params);
+        pageBean.setRows(stuList);
+
+        return pageBean;
+
     }
 
     /**

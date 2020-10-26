@@ -1,6 +1,7 @@
 package com.github.sdms.service;
 
 import com.github.sdms.entity.Stu;
+import com.github.sdms.util.Page;
 
 import java.util.List;
 
@@ -27,7 +28,7 @@ public interface StuService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<Stu> queryAllByLimit(int offset, int limit);
+    Page<Stu> queryAllByLimit(Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode);
 
     /**
      * 新增数据

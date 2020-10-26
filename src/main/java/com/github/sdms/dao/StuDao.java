@@ -4,6 +4,7 @@ import com.github.sdms.entity.Stu;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 学生信息(Stu)表数据库访问层
@@ -28,8 +29,9 @@ public interface StuDao {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<Stu> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Stu> queryAllByLimit(Map<String, Object> params);
 
+    Integer countByLimit(Map<String, Object> params);
 
     /**
      * 通过实体作为筛选条件查询

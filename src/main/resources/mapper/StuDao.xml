@@ -23,10 +23,30 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="StuMap">
-        select
-          id, name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks
-        from sdmsdb.sdms_stu
-        limit #{offset}, #{limit}
+        SELECT
+            ss.*,sc.code AS clazzCode,st.name AS tchName,sd.code AS dormCode,sd.apt_name AS aptName, sd.tenant_limit AS tenantLimit, sd.monthly_rent AS monthlyRent
+        FROM
+            sdms_stu ss
+        LEFT JOIN sdms_clazz sc ON ss.clazz_code=sc.`code`
+        LEFT JOIN sdms_tch st ON sc.tch_id=st.id
+        LEFT JOIN sdms_dorm sd ON ss.dorm_id=sd.id
+        <where>
+            <if test="paymentDeadline != null and paymentDeadline != ''">
+                AND ss.payment_deadline = #{paymentDeadline}
+            </if>
+            <if test="aptName != null and aptName != ''">
+                AND sd.apt_name LIKE CONCAT('%', #{aptName} ,'%')
+            </if>
+            <if test="tchName != null and tchName !=''">
+                AND st.name LIKE CONCAT('%', #{tchName} ,'%')
+            </if>
+            <if test="clazzCode != null and clazzCode != ''">
+                AND sc.code LIKE CONCAT('%', #{clazzCode} ,'%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -60,6 +80,32 @@
                 and remarks = #{remarks}
             </if>
         </where>
+    </select>
+    <select id="countByLimit" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_stu ss
+        LEFT JOIN sdms_clazz sc ON ss.clazz_code=sc.`code`
+        LEFT JOIN sdms_tch st ON sc.tch_id=st.id
+        LEFT JOIN sdms_dorm sd ON ss.dorm_id=sd.id
+        <where>
+            <if test="paymentDeadline != null and paymentDeadline != ''">
+                AND ss.payment_deadline = #{paymentDeadline}
+            </if>
+            <if test="aptName != null and aptName != ''">
+                AND sd.apt_name LIKE CONCAT('%', #{aptName} ,'%')
+            </if>
+            <if test="tchName != null and tchName !=''">
+                AND st.name LIKE CONCAT('%', #{tchName} ,'%')
+            </if>
+            <if test="clazzCode != null and clazzCode != ''">
+                AND sc.code LIKE CONCAT('%', #{clazzCode} ,'%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--新增所有列-->
