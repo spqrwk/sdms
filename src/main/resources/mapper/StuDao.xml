@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.sdms.dao.StuDao">
+
+    <resultMap type="com.github.sdms.entity.Stu" id="StuMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="idNo" column="id_no" jdbcType="VARCHAR"/>
+        <result property="clazzCode" column="clazz_code" jdbcType="INTEGER"/>
+        <result property="dormId" column="dorm_id" jdbcType="INTEGER"/>
+        <result property="checkInDate" column="check_in_date" jdbcType="TIMESTAMP"/>
+        <result property="paymentDeadline" column="payment_deadline" jdbcType="TIMESTAMP"/>
+        <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="StuMap">
+        select
+          id, name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks
+        from sdmsdb.sdms_stu
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="StuMap">
+        select
+          id, name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks
+        from sdmsdb.sdms_stu
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="StuMap">
+        select
+        id, name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks
+        from sdmsdb.sdms_stu
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="idNo != null and idNo != ''">
+                and id_no = #{idNo}
+            </if>
+            <if test="clazzCode != null">
+                and clazz_code = #{clazzCode}
+            </if>
+            <if test="dormId != null">
+                and dorm_id = #{dormId}
+            </if>
+            <if test="checkInDate != null">
+                and check_in_date = #{checkInDate}
+            </if>
+            <if test="paymentDeadline != null">
+                and payment_deadline = #{paymentDeadline}
+            </if>
+            <if test="remarks != null and remarks != ''">
+                and remarks = #{remarks}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
+        values (#{name}, #{idNo}, #{clazzCode}, #{dormId}, #{checkInDate}, #{paymentDeadline}, #{remarks})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.idNo}, #{entity.clazzCode}, #{entity.dormId}, #{entity.checkInDate},
+            #{entity.paymentDeadline}, #{entity.remarks})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.name}, #{entity.idNo}, #{entity.clazzCode}, #{entity.dormId}, #{entity.checkInDate},
+            #{entity.paymentDeadline}, #{entity.remarks})
+        </foreach>
+        on duplicate key update
+        name = values(name) , id_no = values(id_no) , clazz_code = values(clazz_code) , dorm_id = values(dorm_id) ,
+        check_in_date = values(check_in_date) , payment_deadline = values(payment_deadline) , remarks = values(remarks)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sdmsdb.sdms_stu
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="idNo != null and idNo != ''">
+                id_no = #{idNo},
+            </if>
+            <if test="clazzCode != null">
+                clazz_code = #{clazzCode},
+            </if>
+            <if test="dormId != null">
+                dorm_id = #{dormId},
+            </if>
+            <if test="checkInDate != null">
+                check_in_date = #{checkInDate},
+            </if>
+            <if test="paymentDeadline != null">
+                payment_deadline = #{paymentDeadline},
+            </if>
+            <if test="remarks != null and remarks != ''">
+                remarks = #{remarks},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sdmsdb.sdms_stu where id = #{id}
+    </delete>
+
+</mapper>

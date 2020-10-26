@@ -1,7 +1,7 @@
 package com.github.sdms.service.impl;
 
-import com.github.sdms.mapper.UserDao;
-import com.github.sdms.pojo.User;
+import com.github.sdms.dao.UserDao;
+import com.github.sdms.entity.User;
 import com.github.sdms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,15 +9,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * (User)表服务实现类
+ * 系统登录用户信息(User)表服务实现类
  *
  * @author makejava
- * @since 2020-10-23 17:09:00
+ * @since 2020-10-26 09:41:01
  */
 @Service("userService")
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+
+
+    @Override
+    public User queryByCode(String code) {
+        return userDao.queryByCode(code);
+    }
 
     /**
      * 通过ID查询单条数据

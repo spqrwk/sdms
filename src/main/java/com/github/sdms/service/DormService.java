@@ -1,20 +1,16 @@
 package com.github.sdms.service;
 
-import com.github.sdms.entity.User;
+import com.github.sdms.entity.Dorm;
 
 import java.util.List;
 
 /**
- * 系统登录用户信息(User)表服务接口
+ * 宿舍信息(Dorm)表服务接口
  *
  * @author makejava
- * @since 2020-10-26 09:41:01
+ * @since 2020-10-26 10:25:38
  */
-public interface UserService {
-
-
-   User queryByCode(String code);
-
+public interface DormService {
 
     /**
      * 通过ID查询单条数据
@@ -22,7 +18,7 @@ public interface UserService {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Long id);
+    Dorm queryById(Long id);
 
     /**
      * 查询多条数据
@@ -31,23 +27,23 @@ public interface UserService {
      * @param limit  查询条数
      * @return 对象列表
      */
-    List<User> queryAllByLimit(int offset, int limit);
+    List<Dorm> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
      *
-     * @param user 实例对象
+     * @param dorm 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    Dorm insert(Dorm dorm);
 
     /**
      * 修改数据
      *
-     * @param user 实例对象
+     * @param dorm 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    Dorm update(Dorm dorm);
 
     /**
      * 通过主键删除数据

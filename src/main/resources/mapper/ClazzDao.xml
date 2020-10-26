@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.sdms.dao.ClazzDao">
+
+    <resultMap type="com.github.sdms.entity.Clazz" id="ClazzMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="code" column="code" jdbcType="VARCHAR"/>
+        <result property="tchId" column="tch_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ClazzMap">
+        select
+          id, code, tch_id
+        from sdmsdb.sdms_clazz
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ClazzMap">
+        select
+          id, code, tch_id
+        from sdmsdb.sdms_clazz
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ClazzMap">
+        select
+        id, code, tch_id
+        from sdmsdb.sdms_clazz
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="code != null and code != ''">
+                and code = #{code}
+            </if>
+            <if test="tchId != null">
+                and tch_id = #{tchId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_clazz(code, tch_id)
+        values (#{code}, #{tchId})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_clazz(code, tch_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.code}, #{entity.tchId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into sdmsdb.sdms_clazz(code, tch_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.code}, #{entity.tchId})
+        </foreach>
+        on duplicate key update
+        code = values(code) , tch_id = values(tch_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update sdmsdb.sdms_clazz
+        <set>
+            <if test="code != null and code != ''">
+                code = #{code},
+            </if>
+            <if test="tchId != null">
+                tch_id = #{tchId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from sdmsdb.sdms_clazz where id = #{id}
+    </delete>
+
+</mapper>

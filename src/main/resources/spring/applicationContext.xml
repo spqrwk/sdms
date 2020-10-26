@@ -26,13 +26,13 @@
     <!-- 将SqlSessionFactory交给Spring管理 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="com.github.sdms.pojo"/>
+        <property name="typeAliasesPackage" value="com.github.sdms.entity"/>
         <property name="mapperLocations" value="classpath:mapper/*.xml"/>
     </bean>
 
     <!-- Mapper接口扫描器 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.github.sdms.mapper"/>
+        <property name="basePackage" value="com.github.sdms.dao"/>
     </bean>
 
     <!-- 配置声明式事务 -->
