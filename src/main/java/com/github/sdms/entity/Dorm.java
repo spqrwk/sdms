@@ -6,10 +6,10 @@ import java.io.Serializable;
  * 宿舍信息(Dorm)实体类
  *
  * @author makejava
- * @since 2020-10-26 10:25:38
+ * @since 2020-10-26 16:46:40
  */
 public class Dorm implements Serializable {
-    private static final long serialVersionUID = -81116512243965999L;
+    private static final long serialVersionUID = 597841468518678934L;
     /**
      * 宿舍ID
      */
@@ -23,13 +23,17 @@ public class Dorm implements Serializable {
      */
     private Long monthlyRent;
     /**
-     * 公寓ID
+     * 公寓名称
      */
-    private Long aptName;
-
-    private Integer dormMax;
-
-    private Integer dormCurrent;
+    private String aptName;
+    /**
+     * 最大住宿人数
+     */
+    private Integer tenantLimit;
+    /**
+     * 当前住宿人数
+     */
+    private Integer currentTenant;
 
 
     public Long getId() {
@@ -56,28 +60,28 @@ public class Dorm implements Serializable {
         this.monthlyRent = monthlyRent;
     }
 
-    public Long getAptName() {
+    public String getAptName() {
         return aptName;
     }
 
-    public void setAptName(Long aptName) {
+    public void setAptName(String aptName) {
         this.aptName = aptName;
     }
 
-    public Integer getDormMax() {
-        return dormMax;
+    public Integer getTenantLimit() {
+        return tenantLimit;
     }
 
-    public void setDormMax(Integer dormMax) {
-        this.dormMax = dormMax;
+    public void setTenantLimit(Integer tenantLimit) {
+        this.tenantLimit = tenantLimit;
     }
 
-    public Integer getDormCurrent() {
-        return dormCurrent;
+    public Integer getCurrentTenant() {
+        return currentTenant;
     }
 
-    public void setDormCurrent(Integer dormCurrent) {
-        this.dormCurrent = dormCurrent;
+    public void setCurrentTenant(Integer currentTenant) {
+        this.currentTenant = currentTenant;
     }
 
 }

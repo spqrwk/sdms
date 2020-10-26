@@ -23,6 +23,8 @@ public class Clazz implements Serializable {
      */
     private Long tchId;
 
+/*    private String name;*/
+    private String tchName;
 
     public Long getId() {
         return id;
@@ -48,4 +50,19 @@ public class Clazz implements Serializable {
         this.tchId = tchId;
     }
 
+/*    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }*/
+
+    public String getTchName() {
+        return tchName;
+    }
+
+    public void setTchName(String tchName) {
+        this.tchName = tchName;
+    }
 }

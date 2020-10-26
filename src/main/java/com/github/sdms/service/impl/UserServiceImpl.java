@@ -1,11 +1,14 @@
 package com.github.sdms.service.impl;
 
 import com.github.sdms.dao.UserDao;
+import com.github.sdms.entity.Tch;
 import com.github.sdms.entity.User;
 import com.github.sdms.service.UserService;
+import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -39,14 +42,25 @@ public class UserServiceImpl implements UserService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
-    public List<User> queryAllByLimit(int offset, int limit) {
-        return this.userDao.queryAllByLimit(offset, limit);
-    }
+    public Page<User> queryAllByLimit(Integer currentPage, String userCode, String username) {
+        Page<User> pageBean = new Page<>(currentPage);
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("userCode", userCode);
+        params.put("username", username);
+
+        int totalCount = userDao.countByLimit(params);
+        pageBean.setTotalCount(totalCount);
+
+        params.put("startIndex", pageBean.getStartIndex());
+        params.put("pageSize", pageBean.getPageSize());
+        List<User> userList = userDao.queryAllByLimit(params);
+        pageBean.setRows(userList);
+
+        return pageBean;    }
 
     /**
      * 新增数据

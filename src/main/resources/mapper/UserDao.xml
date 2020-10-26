@@ -27,10 +27,21 @@
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="UserMap">
-        select
-          id, user_code, password, username
-        from sdmsdb.sdms_user
-        limit #{offset}, #{limit}
+        SELECT
+            *
+        FROM
+            sdms_user su
+        <where>
+            <if test="userCode != null and userCode !=''">
+                AND su.user_code LIKE CONCAT('%', #{userCode}, '%')
+            </if>
+            <if test="username != null and username != ''">
+                AND su.username LIKE CONCAT('%', #{username}, '%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--通过实体作为筛选条件查询-->
@@ -52,6 +63,24 @@
                 and username = #{username}
             </if>
         </where>
+    </select>
+
+    <select id="countByLimit" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_user su
+        <where>
+            <if test="userCode != null and userCode !=''">
+                AND su.user_code LIKE CONCAT('%', #{userCode}, '%')
+            </if>
+            <if test="username != null and username != ''">
+                AND su.username LIKE CONCAT('%', #{username}, '%')
+            </if>
+        </where>
+        <if test="startIndex != null and pageSize != null">
+            LIMIT #{startIndex}, #{pageSize}
+        </if>
     </select>
 
     <!--新增所有列-->

@@ -4,12 +4,13 @@ import com.github.sdms.entity.Dorm;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 宿舍信息(Dorm)表数据库访问层
  *
  * @author makejava
- * @since 2020-10-26 10:25:38
+ * @since 2020-10-26 16:46:40
  */
 public interface DormDao {
 
@@ -23,12 +24,11 @@ public interface DormDao {
 
     /**
      * 查询指定行数据
-     *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    List<Dorm> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Dorm> queryAllByLimit(Map<String, Object> params);
+
+    Integer countByLimit(Map<String, Object> params);
 
 
     /**
@@ -37,7 +37,7 @@ public interface DormDao {
      * @param dorm 实例对象
      * @return 对象列表
      */
-    List<Dorm> queryAll(Dorm dorm);
+    // List<Dorm> queryAll(Dorm dorm);
 
     /**
      * 新增数据

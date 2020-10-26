@@ -1,11 +1,15 @@
 package com.github.sdms.controller;
 
 import com.github.sdms.entity.Stu;
+import com.github.sdms.entity.Tch;
 import com.github.sdms.service.StuService;
+import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -24,15 +28,12 @@ public class StuController {
     @Autowired
     private StuService stuService;
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Stu selectOne(Long id) {
-        return this.stuService.queryById(id);
+    @RequestMapping("list")
+    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode, Model model) {
+        Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, paymentDeadline, aptName, tchName, clazzCode);
+        model.addAttribute("pageBean", pageBean);
+
+        return "stulist";
     }
 
 }

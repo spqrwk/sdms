@@ -1,11 +1,15 @@
 package com.github.sdms.controller;
 
+import cn.hutool.crypto.Mode;
 import com.github.sdms.entity.Clazz;
 import com.github.sdms.service.ClazzService;
+import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -23,6 +27,15 @@ public class ClazzController {
      */
     @Autowired
     private ClazzService clazzService;
+
+    @RequestMapping("list")
+    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, String clazzCode, Model model) {
+        Page<Clazz> pageBean = clazzService.queryAllByLimit(currentPage, clazzCode);
+        System.out.println(pageBean.getRows());
+        model.addAttribute("pageBean", pageBean);
+        model.addAttribute("clazzCode", clazzCode);
+        return "clazzlist";
+    }
 
     /**
      * 通过主键查询单条数据

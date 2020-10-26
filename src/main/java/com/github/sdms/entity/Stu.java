@@ -26,7 +26,7 @@ public class Stu implements Serializable {
     /**
      * 班级ID
      */
-    private Long clazzCode;
+    private String clazzCode;
     /**
      * 宿舍ID
      */
@@ -44,6 +44,15 @@ public class Stu implements Serializable {
      */
     private String remarks;
 
+    private String tchName;
+
+    private String dormCode;
+
+    private String aptName;
+
+    private String tenantLimit;
+
+    private String monthlyRent;
 
     public Long getId() {
         return id;
@@ -69,11 +78,11 @@ public class Stu implements Serializable {
         this.idNo = idNo;
     }
 
-    public Long getClazzCode() {
+    public String getClazzCode() {
         return clazzCode;
     }
 
-    public void setClazzCode(Long clazzCode) {
+    public void setClazzCode(String clazzCode) {
         this.clazzCode = clazzCode;
     }
 
@@ -109,4 +118,43 @@ public class Stu implements Serializable {
         this.remarks = remarks;
     }
 
+    public String getTchName() {
+        return tchName;
+    }
+
+    public void setTchName(String tchName) {
+        this.tchName = tchName;
+    }
+
+    public String getDormCode() {
+        return dormCode;
+    }
+
+    public void setDormCode(String dormCode) {
+        this.dormCode = dormCode;
+    }
+
+    public String getAptName() {
+        return aptName;
+    }
+
+    public void setAptName(String aptName) {
+        this.aptName = aptName;
+    }
+
+    public String getTenantLimit() {
+        return tenantLimit;
+    }
+
+    public void setTenantLimit(String tenantLimit) {
+        this.tenantLimit = tenantLimit;
+    }
+
+    public String getMonthlyRent() {
+        return monthlyRent;
+    }
+
+    public void setMonthlyRent(String monthlyRent) {
+        this.monthlyRent = monthlyRent;
+    }
 }

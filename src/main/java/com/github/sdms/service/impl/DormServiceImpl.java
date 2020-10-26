@@ -2,17 +2,20 @@ package com.github.sdms.service.impl;
 
 import com.github.sdms.dao.DormDao;
 import com.github.sdms.entity.Dorm;
+import com.github.sdms.entity.Tch;
 import com.github.sdms.service.DormService;
+import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
  * 宿舍信息(Dorm)表服务实现类
  *
  * @author makejava
- * @since 2020-10-26 10:25:39
+ * @since 2020-10-26 16:46:41
  */
 @Service("dormService")
 public class DormServiceImpl implements DormService {
@@ -33,13 +36,25 @@ public class DormServiceImpl implements DormService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
     @Override
-    public List<Dorm> queryAllByLimit(int offset, int limit) {
-        return this.dormDao.queryAllByLimit(offset, limit);
+    public Page<Dorm> queryAllByLimit(Integer currentPage, String dormCode, String aptName) {
+        Page<Dorm> pageBean = new Page<>(currentPage);
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("dormCode", dormCode);
+        params.put("aptName", aptName);
+
+        int totalCount = dormDao.countByLimit(params);
+        pageBean.setTotalCount(totalCount);
+
+        params.put("startIndex", pageBean.getStartIndex());
+        params.put("pageSize", pageBean.getPageSize());
+        List<Dorm> dormList = dormDao.queryAllByLimit(params);
+        pageBean.setRows(dormList);
+
+        return pageBean;
     }
 
     /**

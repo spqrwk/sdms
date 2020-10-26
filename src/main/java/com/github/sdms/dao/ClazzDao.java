@@ -4,6 +4,7 @@ import com.github.sdms.entity.Clazz;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 班级信息(Clazz)表数据库访问层
@@ -24,20 +25,11 @@ public interface ClazzDao {
     /**
      * 查询指定行数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    List<Clazz> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
+    List<Clazz> queryAllByLimit(Map<String, Object> params);
 
-
-    /**
-     * 通过实体作为筛选条件查询
-     *
-     * @param clazz 实例对象
-     * @return 对象列表
-     */
-    List<Clazz> queryAll(Clazz clazz);
+    Integer countByLimit(Map<String, Object> params);
 
     /**
      * 新增数据
@@ -46,22 +38,6 @@ public interface ClazzDao {
      * @return 影响行数
      */
     int insert(Clazz clazz);
-
-    /**
-     * 批量新增数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<Clazz> 实例对象列表
-     * @return 影响行数
-     */
-    int insertBatch(@Param("entities") List<Clazz> entities);
-
-    /**
-     * 批量新增或按主键更新数据（MyBatis原生foreach方法）
-     *
-     * @param entities List<Clazz> 实例对象列表
-     * @return 影响行数
-     */
-    int insertOrUpdateBatch(@Param("entities") List<Clazz> entities);
 
     /**
      * 修改数据
