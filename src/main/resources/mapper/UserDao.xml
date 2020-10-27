@@ -11,18 +11,22 @@
 
     <!--根据code查询单个-->
     <select id="queryByCode" resultMap="UserMap">
-        select
-          id, user_code, password, username
-        from sdmsdb.sdms_user
-        where user_code = #{userCode}
+        SELECT
+            *
+        FROM
+            sdmsdb.sdms_user
+        WHERE
+            user_code = #{userCode}
     </select>
 
     <!--查询单个-->
     <select id="queryById" resultMap="UserMap">
-        select
-          id, user_code, password, username
-        from sdmsdb.sdms_user
-        where id = #{id}
+        SELECT
+          *
+        FROM
+            sdms_user
+        WHERE
+            id = #{id}
     </select>
 
     <!--查询指定行数据-->
@@ -42,27 +46,6 @@
         <if test="startIndex != null and pageSize != null">
             LIMIT #{startIndex}, #{pageSize}
         </if>
-    </select>
-
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="UserMap">
-        select
-        id, user_code, password, username
-        from sdmsdb.sdms_user
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="userCode != null and userCode != ''">
-                and user_code = #{userCode}
-            </if>
-            <if test="password != null and password != ''">
-                and password = #{password}
-            </if>
-            <if test="username != null and username != ''">
-                and username = #{username}
-            </if>
-        </where>
     </select>
 
     <select id="countByLimit" resultType="java.lang.Integer">
@@ -85,48 +68,29 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_user(user_code, password, username)
-        values (#{userCode}, #{password}, #{username})
-    </insert>
-
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_user(user_code, password, username)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userCode}, #{entity.password}, #{entity.username})
-        </foreach>
-    </insert>
-
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_user(user_code, password, username)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.userCode}, #{entity.password}, #{entity.username})
-        </foreach>
-        on duplicate key update
-        user_code = values(user_code) , password = values(password) , username = values(username)
+        INSERT INTO
+            sdms_user(user_code, password, username)
+        VALUES
+            (#{userCode}, #{password}, #{username})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update sdmsdb.sdms_user
-        <set>
-            <if test="userCode != null and userCode != ''">
-                user_code = #{userCode},
-            </if>
-            <if test="password != null and password != ''">
-                password = #{password},
-            </if>
-            <if test="username != null and username != ''">
-                username = #{username},
-            </if>
-        </set>
-        where id = #{id}
+        UPDATE
+            sdms_user
+        <trim prefix="set" suffix="where id = #{id}" suffixOverrides=",">
+            <if test="userCode != null">user_code = #{userCode},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="username != null">username = #{username}</if>
+        </trim>
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from sdmsdb.sdms_user where id = #{id}
+        DELETE FROM
+            sdms_user
+        WHERE
+            id = #{id}
     </delete>
 
 </mapper>

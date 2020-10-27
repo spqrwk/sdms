@@ -28,8 +28,6 @@ public interface UserService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
     Page<User> queryAllByLimit(Integer currentPage, String userCode, String username);
@@ -40,7 +38,7 @@ public interface UserService {
      * @param user 实例对象
      * @return 实例对象
      */
-    User insert(User user);
+    void insert(User user);
 
     /**
      * 修改数据
@@ -48,7 +46,7 @@ public interface UserService {
      * @param user 实例对象
      * @return 实例对象
      */
-    User update(User user);
+    void update(User user);
 
     /**
      * 通过主键删除数据

@@ -3,6 +3,7 @@ package com.github.sdms.service;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.util.Page;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,11 +25,9 @@ public interface StuService {
     /**
      * 查询多条数据
      *
-     * @param offset 查询起始位置
-     * @param limit  查询条数
      * @return 对象列表
      */
-    Page<Stu> queryAllByLimit(Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode);
+    Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String tchName, String clazzCode);
 
     /**
      * 新增数据
@@ -36,7 +35,7 @@ public interface StuService {
      * @param stu 实例对象
      * @return 实例对象
      */
-    Stu insert(Stu stu);
+    void insert(Stu stu);
 
     /**
      * 修改数据
@@ -44,7 +43,7 @@ public interface StuService {
      * @param stu 实例对象
      * @return 实例对象
      */
-    Stu update(Stu stu);
+    void update(Stu stu);
 
     /**
      * 通过主键删除数据
