@@ -34,7 +34,6 @@ public interface ClazzDao {
     /**
      * 新增数据
      *
-     * @param clazz 实例对象
      * @return 影响行数
      */
     int insert(Clazz clazz);
@@ -57,4 +56,7 @@ public interface ClazzDao {
 
     Clazz view(@Param("id") Long id);
 
+    Integer queryByClazzCode(@Param("code") String clazzCode);
+
+    int add(@Param("code") String code);
 }

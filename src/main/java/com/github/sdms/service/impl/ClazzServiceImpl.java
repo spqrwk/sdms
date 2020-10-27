@@ -6,6 +6,7 @@ import com.github.sdms.entity.Clazz;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.ClazzService;
 import com.github.sdms.util.Page;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,6 +70,11 @@ public class ClazzServiceImpl implements ClazzService {
     @Override
     public void insert(Clazz clazz) {
         this.clazzDao.insert(clazz);
+    }
+
+    @Override
+    public void add(String code) {
+        this.clazzDao.add(code);
     }
 
     /**

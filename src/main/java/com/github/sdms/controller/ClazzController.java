@@ -84,14 +84,9 @@ public class ClazzController {
     }
 
     @RequestMapping("update")
-    public String update(Long id, HttpServletRequest request, Model model) {
+    public String update(Clazz clazz, HttpServletRequest request, Model model) {
         try {
-            Clazz clazz = clazzService.queryById(id);
-            if (clazz == null) {
-                throw new Exception("用户不存在！");
-            }
-            clazzService.insert(clazz);
-
+            clazzService.update(clazz);
             return "redirect:/clazz/list";
         } catch (Exception e) {
             e.printStackTrace();

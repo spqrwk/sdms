@@ -59,12 +59,28 @@
             sc.id = #{id}
     </select>
 
+    <select id="queryByClazzCode" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_clazz
+        WHERE
+            code = #{clazzCode}
+    </select>
+
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert">
         INSERT INTO
             sdms_clazz(code, tch_id)
         VALUES
             (#{code}, #{tchId})
+    </insert>
+
+    <insert id="add">
+        INSERT INTO
+            sdms_clazz(code)
+        VALUES
+            (#{code})
     </insert>
 
     <!--通过主键修改数据-->

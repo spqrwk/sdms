@@ -1,5 +1,6 @@
 package com.github.sdms.service.impl;
 
+import com.github.sdms.dao.ClazzDao;
 import com.github.sdms.dao.StuDao;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.entity.Tch;
@@ -22,6 +23,9 @@ import java.util.List;
 public class StuServiceImpl implements StuService {
     @Autowired
     private StuDao stuDao;
+
+    @Autowired
+    private ClazzDao clazzDao;
 
     @Override
     public int queryByDorm(Long dormId) {
@@ -78,6 +82,9 @@ public class StuServiceImpl implements StuService {
     @Override
     public void insert(Stu stu) {
         this.stuDao.insert(stu);
+        if (clazzDao.queryByClazzCode(stu.getClazzCode()) == 0) {
+            clazzDao.add(stu.getClazzCode());
+        }
     }
 
     /**

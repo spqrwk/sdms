@@ -36,6 +36,8 @@ public interface ClazzService {
      */
     void insert(Clazz clazz);
 
+    void add(String code);
+
     /**
      * 修改数据
      *
