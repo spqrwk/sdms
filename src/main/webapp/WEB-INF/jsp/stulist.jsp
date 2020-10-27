@@ -473,7 +473,7 @@ MAIN CONTENT LAYOUT
                             <c:forEach items="${pageBean.rows}" var="stu" varStatus="status">
                                 <tr>
                                     <td class="text-center">${status.count}</td>
-                                    <td class="font-w600">${stu.aptName}号公寓</td>
+                                    <td class="font-w600">${stu.aptName}</td>
                                     <td class="font-w600">${stu.dormCode}</td>
                                     <td class="font-w600">${stu.tenantLimit}</td>
                                     <td class="font-w600">${stu.name}</td>

@@ -438,7 +438,7 @@ MAIN CONTENT LAYOUT
                         <div class="form-group row">
                             <label class="col-12">公寓名称</label>
                             <div class="col-md-9">
-                                <div class="form-control-plaintext">${stu.aptName}号公寓</div>
+                                <div class="form-control-plaintext">${stu.aptName}</div>
                             </div>
                         </div>
                         <div class="form-group row">

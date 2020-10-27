@@ -90,10 +90,7 @@ public class TchController {
     public String update(Long id, HttpServletRequest request, Model model) {
         try {
             Tch tch = tchService.queryById(id);
-            if (tch == null) {
-                throw new Exception("班主任不存在！");
-            }
-            tchService.insert(tch);
+            tchService.update(tch);
 
             return "redirect:/tch/list";
         } catch (Exception e) {

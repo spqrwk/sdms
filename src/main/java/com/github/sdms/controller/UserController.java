@@ -90,10 +90,7 @@ public class UserController {
     public String update(Long id, HttpServletRequest request, Model model) {
         try {
             User user = userService.queryById(id);
-            if (user == null) {
-                throw new Exception("用户不存在！");
-            }
-            userService.insert(user);
+            userService.update(user);
 
             return "redirect:/user/list";
         } catch (Exception e) {

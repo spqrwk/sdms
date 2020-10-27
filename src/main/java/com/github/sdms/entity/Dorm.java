@@ -88,4 +88,16 @@ public class Dorm implements Serializable {
         this.currentTenant = currentTenant;
     }
 
+    @Override
+    public String toString() {
+        return "Dorm{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", monthlyRent=" + monthlyRent +
+                ", aptName='" + aptName + '\'' +
+                ", tenantLimit=" + tenantLimit +
+                ", currentTenant=" + currentTenant +
+                ", stuService=" + stuService +
+                '}';
+    }
 }

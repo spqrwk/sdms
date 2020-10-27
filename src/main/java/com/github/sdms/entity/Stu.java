@@ -1,5 +1,7 @@
 package com.github.sdms.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -34,10 +36,32 @@ public class Stu implements Serializable {
     /**
      * 入住日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date checkInDate;
+
+    @Override
+    public String toString() {
+        return "Stu{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", idNo='" + idNo + '\'' +
+                ", clazzCode='" + clazzCode + '\'' +
+                ", dormId=" + dormId +
+                ", checkInDate=" + checkInDate +
+                ", paymentDeadline=" + paymentDeadline +
+                ", remarks='" + remarks + '\'' +
+                ", tchName='" + tchName + '\'' +
+                ", dormCode='" + dormCode + '\'' +
+                ", aptName='" + aptName + '\'' +
+                ", tenantLimit='" + tenantLimit + '\'' +
+                ", monthlyRent='" + monthlyRent + '\'' +
+                '}';
+    }
+
     /**
      * 缴费截止日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date paymentDeadline;
     /**
      * 备注

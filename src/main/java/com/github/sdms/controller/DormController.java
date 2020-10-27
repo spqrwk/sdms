@@ -85,13 +85,10 @@ public class DormController {
     }
 
     @RequestMapping("update")
-    public String update(Long id, HttpServletRequest request, Model model) {
+    public String update(Dorm dorm,Model model) {
         try {
-            Dorm dorm = dormService.queryById(id);
-            if (dorm == null) {
-                throw new Exception("用户不存在！");
-            }
-            dormService.insert(dorm);
+            System.out.println(dorm);
+            dormService.update(dorm);
 
             return "redirect:/dorm/list";
         } catch (Exception e) {

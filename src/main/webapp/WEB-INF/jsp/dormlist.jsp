@@ -466,7 +466,7 @@ MAIN CONTENT LAYOUT
                                 <tr>
                                     <td class="text-center">${status.count}</td>
                                     <td class="font-w600">${dorm.code}</td>
-                                    <td class="font-w600">${dorm.aptName}号公寓</td>
+                                    <td class="font-w600">${dorm.aptName}</td>
                                     <td class="font-w600">${dorm.monthlyRent}</td>
                                     <td class="font-w600">${dorm.tenantLimit}</td>
                                     <td class="font-w600">${dorm.currentTenant}</td>
@@ -477,7 +477,7 @@ MAIN CONTENT LAYOUT
                                                     <i class="fa fa-user"></i>
                                                 </button>
                                             </a>
-                                            <a href="${realPath}/dorm/totupdate?id=${dorm.id}">
+                                            <a href="${realPath}/dorm/toupdate?id=${dorm.id}">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="修改">
                                                     <i class="fa fa-pencil"></i>
 

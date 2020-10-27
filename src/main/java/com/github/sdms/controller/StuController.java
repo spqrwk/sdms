@@ -2,11 +2,10 @@ package com.github.sdms.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.Stu;
-import com.github.sdms.entity.Tch;
-import com.github.sdms.entity.User;
 import com.github.sdms.service.StuService;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -56,9 +55,11 @@ public class StuController {
         return "stuadd";
     }
 
+
     @RequestMapping("addnew")
     public String add(Stu stu, Model model) {
         try {
+            System.out.println(stu);
             stuService.insert(stu);
             model.addAttribute("addResult", "添加成功！");
         } catch (Exception e) {
@@ -90,10 +91,7 @@ public class StuController {
     public String update(Long id, HttpServletRequest request, Model model) {
         try {
             Stu stu = stuService.queryById(id);
-            if (stu == null) {
-                throw new Exception("用户不存在！");
-            }
-            stuService.insert(stu);
+            stuService.update(stu);
 
             return "redirect:/stu/list";
         } catch (Exception e) {
