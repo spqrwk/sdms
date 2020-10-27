@@ -23,6 +23,13 @@ public class StuServiceImpl implements StuService {
     @Autowired
     private StuDao stuDao;
 
+    @Override
+    public int queryByDorm(Long dormId) {
+
+        return stuDao.queryCountByDormId(dormId);
+
+    }
+
     /**
      * 通过ID查询单条数据
      *

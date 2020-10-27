@@ -1,5 +1,8 @@
 package com.github.sdms.entity;
 
+import com.github.sdms.service.StuService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 
 /**
@@ -34,7 +37,8 @@ public class Dorm implements Serializable {
      * 当前住宿人数
      */
     private Integer currentTenant;
-
+    @Autowired
+    private StuService stuService;
 
     public Long getId() {
         return id;

@@ -466,7 +466,7 @@ MAIN CONTENT LAYOUT
                                 <tr>
                                     <td class="text-center">${status.count}</td>
                                     <td class="font-w600">${dorm.code}</td>
-                                    <td class="font-w600">${dorm.aptName}</td>
+                                    <td class="font-w600">${dorm.aptName}号公寓</td>
                                     <td class="font-w600">${dorm.monthlyRent}</td>
                                     <td class="font-w600">${dorm.tenantLimit}</td>
                                     <td class="font-w600">${dorm.currentTenant}</td>

@@ -436,15 +436,33 @@ MAIN CONTENT LAYOUT
                 <div class="block-content">
                     <form action="be_forms_elements_bootstrap.html" method="post" enctype="multipart/form-data" onsubmit="return false;">
                         <div class="form-group row">
-                            <label class="col-12">用户编码</label>
+                            <label class="col-12">宿舍编号</label>
                             <div class="col-md-9">
-                                <div class="form-control-plaintext">${user.userCode}</div>
+                                <div class="form-control-plaintext">${dorm.code}</div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">用户昵称</label>
+                            <label class="col-12">公寓名称</label>
                             <div class="col-md-9">
-                                <div class="form-control-plaintext">${user.username}</div>
+                                <div class="form-control-plaintext">${dorm.aptName}号公寓</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">每月租金</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">${dorm.monthlyRent}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">最大可住人数</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">${dorm.tenantLimit}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">已住人数</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">${dorm.currentTenant}</div>
                             </div>
                         </div>
                     </form>

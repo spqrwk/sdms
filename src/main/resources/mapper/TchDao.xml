@@ -53,9 +53,9 @@
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO
-            sdms_tch(name, clazz_id)
+            sdms_tch(name)
         VALUES
-            (#{name}, #{clazzId})
+            (#{name})
     </insert>
 
     <!--通过主键修改数据-->

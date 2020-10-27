@@ -14,6 +14,9 @@ import java.util.List;
  */
 public interface StuService {
 
+
+    int queryByDorm(Long dormId);
+
     /**
      * 通过ID查询单条数据
      *

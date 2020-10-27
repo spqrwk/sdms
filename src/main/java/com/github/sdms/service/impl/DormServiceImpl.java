@@ -4,6 +4,7 @@ import com.github.sdms.dao.DormDao;
 import com.github.sdms.entity.Dorm;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.DormService;
+import com.github.sdms.service.StuService;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,8 @@ import java.util.List;
 public class DormServiceImpl implements DormService {
     @Autowired
     private DormDao dormDao;
-
+    @Autowired
+    private StuService stuService;
     /**
      * 通过ID查询单条数据
      *
@@ -30,7 +32,9 @@ public class DormServiceImpl implements DormService {
      */
     @Override
     public Dorm queryById(Long id) {
-        return this.dormDao.queryById(id);
+        Dorm dorm=this.dormDao.queryById(id);
+        dorm.setCurrentTenant(stuService.queryByDorm(dorm.getId()));
+        return dorm;
     }
 
     /**
@@ -52,6 +56,9 @@ public class DormServiceImpl implements DormService {
         params.put("startIndex", pageBean.getStartIndex());
         params.put("pageSize", pageBean.getPageSize());
         List<Dorm> dormList = dormDao.queryAllByLimit(params);
+        for (Dorm dorm:dormList) {
+            dorm.setCurrentTenant(stuService.queryByDorm(dorm.getId()));
+        }
         pageBean.setRows(dormList);
 
         return pageBean;

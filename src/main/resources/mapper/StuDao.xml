@@ -23,7 +23,7 @@
         LEFT JOIN sdms_tch st ON sc.tch_id=st.id
         LEFT JOIN sdms_dorm sd ON ss.dorm_id=sd.id
         WHERE
-            id = #{id}
+            ss.id = #{id}
     </select>
 
 
@@ -54,6 +54,16 @@
             LIMIT #{startIndex}, #{pageSize}
         </if>
     </select>
+
+    <select id="queryCountByDormId" resultType="java.lang.Integer">
+        SELECT
+        count(1)
+        FROM
+        sdms_stu ss
+        WHERE
+        ss.dorm_id=#{dormId}
+    </select>
+
 
     <select id="countByLimit" resultType="java.lang.Integer">
         SELECT

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.Dorm;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.DormService;
+import com.github.sdms.service.StuService;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,7 @@ public class DormController {
     @Autowired
     private DormService dormService;
 
+
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, String dormCode, String aptName, Model model) {
         Page<Dorm> pageBean = dormService.queryAllByLimit(currentPage, dormCode, aptName);
@@ -44,7 +46,6 @@ public class DormController {
     public String view(Long id, Model model) throws Exception {
         Dorm dorm = dormService.queryById(id);
         model.addAttribute("dorm", dorm);
-
         return "dormview";
     }
     

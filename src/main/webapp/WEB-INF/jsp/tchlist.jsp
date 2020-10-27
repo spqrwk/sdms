@@ -450,7 +450,7 @@ MAIN CONTENT LAYOUT
                         <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
                             <thead>
                             <tr>
-                                <th class="text-center"></th>
+                                <th class="text-center">序号</th>
                                 <th class="d-none d-sm-table-cell">姓名</th>
                                 <%--
                                                             <th class="d-none d-sm-table-cell" style="width: 15%;">Access</th>
@@ -469,17 +469,6 @@ MAIN CONTENT LAYOUT
                                                                         </td>--%>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="${realPath}/tch/view?id=${tch.id}">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="查看">
-                                                    <i class="fa fa-user"></i>
-                                                </button>
-                                            </a>
-                                            <a href="${realPath}/tch/toupdate?id=${tch.id}">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="修改">
-                                                    <i class="fa fa-pencil"></i>
-
-                                                </button>
-                                            </a>
                                             <a href="${realPath}/">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="删除">
                                                     <i class="fa fa-times"></i>

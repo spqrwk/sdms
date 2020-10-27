@@ -57,4 +57,6 @@ public interface StuDao {
     Stu view(@Param("id") Long id);
 
     void delStu(@Param("clazzCode") String clazzCode);
+
+    int queryCountByDormId(Long dormId);
 }
