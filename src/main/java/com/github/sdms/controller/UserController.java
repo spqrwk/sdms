@@ -38,15 +38,21 @@ public class UserController {
 
         return "userlist";
     }
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public String selectOne(Long id) {
-        return JSON.toJSONString(this.userService.queryById(id)) ;
+
+    @RequestMapping("view")
+    public String view(Long id, Model model) throws Exception {
+        // 根据ID查询用户信息
+        User user = userService.queryById(id);
+
+        model.addAttribute("user", user);
+
+        return "userview";
     }
+
+    @RequestMapping("add")
+    public String toAdd() {
+        return "useradd";
+    }
+
 
 }

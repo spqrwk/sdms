@@ -38,15 +38,10 @@ public class DormController {
 
         return "dormlist";
     }
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public Dorm selectOne(Long id) {
-        return this.dormService.queryById(id);
+
+    @RequestMapping("add")
+    public String toAdd() {
+        return "dormadd";
     }
 
 }

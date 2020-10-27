@@ -29,7 +29,7 @@ public interface UserDao {
      * @param id 主键
      * @return 实例对象
      */
-    User queryById(Long id);
+    User queryById(@Param("id") Long id);
 
     /**
      * 查询指定行数据

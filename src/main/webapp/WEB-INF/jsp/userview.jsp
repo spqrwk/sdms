@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%
@@ -35,7 +36,7 @@
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
     <link rel="stylesheet" id="css-main" href="${realPath}/statics/assets/css/codebase.min.css">
-    <link href="${realPath}/statics/assets/css/style.css" rel="stylesheet" />
+
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
     <!-- <link rel="stylesheet" id="css-theme" href="${realPath}/statics/assets/css/themes/flat.min.css"> -->
     <!-- END Stylesheets -->
@@ -280,7 +281,6 @@ MAIN CONTENT LAYOUT
         <div class="content-header">
             <!-- Left Section -->
             <div class="content-header-section">
-                <!-- Toggle Sidebar -->
 
                 <!-- Layout Options (used just for demonstration) -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
@@ -397,6 +397,9 @@ MAIN CONTENT LAYOUT
         </div>
         <!-- END Header Content -->
 
+        <!-- Header Search -->
+
+        <!-- END Header Search -->
 
         <!-- Header Loader -->
         <!-- Please check out the Activity page under Elements category to see examples of showing/hiding it -->
@@ -429,8 +432,30 @@ MAIN CONTENT LAYOUT
 
         <!-- Page Content -->
         <div class="content">
-
-
+            <div class="pt-50 pb-20">
+                <div class="block-content">
+                    <form action="be_forms_elements_bootstrap.html" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                        <div class="form-group row">
+                            <label class="col-12">用户编码</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">${userCode}</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">用户昵称</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">username</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">密码</label>
+                            <div class="col-md-9">
+                                <div class="form-control-plaintext">password</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <!-- END Page Content -->
 
@@ -484,5 +509,6 @@ MAIN CONTENT LAYOUT
 
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
+<script src="${realPath}/statics/js/rollpage.js"></script>
 </body>
 </html>

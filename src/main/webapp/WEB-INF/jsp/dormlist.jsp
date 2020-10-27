@@ -440,9 +440,9 @@ MAIN CONTENT LAYOUT
                             <form class="form-inline" action="${realPath}/dorm/list" method="post">
                                 <input type="hidden" name="p" value="1"/>
                                 <label class="sr-only" for="example-if-email"></label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="dormCode" placeholder="请输入宿舍编号..." value="dormCode">
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="dormCode" placeholder="请输入宿舍编号..." value="${dormCode}">
                                 <label class="sr-only" for="example-if-email"></label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="aptName" placeholder="请输入公寓名称..." value="aptName">
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="aptName" placeholder="请输入公寓名称..." value="${aptName}">
                                 <button type="submit" class="btn btn-alt-primary">查询</button>
                             </form>
                         </div>

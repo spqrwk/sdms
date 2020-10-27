@@ -38,4 +38,8 @@ public class StuController {
         return "stulist";
     }
 
+    @RequestMapping("add")
+    public String toAdd() {
+        return "stuadd";
+    }
 }
