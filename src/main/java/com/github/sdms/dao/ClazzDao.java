@@ -56,7 +56,7 @@ public interface ClazzDao {
 
     Clazz view(@Param("id") Long id);
 
-    Integer queryByClazzCode(@Param("code") String clazzCode);
+    Integer queryByClazzCode(@Param("clazzCode") String clazzCode);
 
     int add(@Param("code") String code);
 }
