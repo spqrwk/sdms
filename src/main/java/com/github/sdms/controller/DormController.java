@@ -1,5 +1,6 @@
 package com.github.sdms.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.Dorm;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.DormService;
@@ -7,10 +8,10 @@ import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 
 
 /**
@@ -39,9 +40,63 @@ public class DormController {
         return "dormlist";
     }
 
+    @RequestMapping("view")
+    public String view(Long id, Model model) throws Exception {
+        Dorm dorm = dormService.queryById(id);
+        model.addAttribute("dorm", dorm);
+
+        return "dormview";
+    }
+    
     @RequestMapping("add")
     public String toAdd() {
         return "dormadd";
     }
 
+    @RequestMapping("/addnew")
+    public String add(Dorm dorm, Model model) {
+        try {
+            dormService.insert(dorm);
+            model.addAttribute("addResult", "添加成功！");
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("addResult", "添加用户失败！" + e.getMessage());
+        }
+        return "dormadd";
+    }
+
+    @ResponseBody
+    @RequestMapping("del")
+    public String del(Long id) throws Exception {
+        dormService.deleteById(id);
+        HashMap<String,Object> map = new HashMap<String, Object>();
+
+        map.put("code", 0);
+        return JSON.toJSONString(map);
+    }
+
+    @RequestMapping("toupdate")
+    public String toUpdate(Long id, Model model) throws Exception {
+        Dorm dorm = dormService.queryById(id);
+        model.addAttribute("dorm", dorm);
+
+        return "dormupdate";
+    }
+
+    @RequestMapping("update")
+    public String update(Long id, HttpServletRequest request, Model model) {
+        try {
+            Dorm dorm = dormService.queryById(id);
+            if (dorm == null) {
+                throw new Exception("用户不存在！");
+            }
+            dormService.insert(dorm);
+
+            return "redirect:/dorm/list";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("updateResult", "修改失败！" + e.getMessage());
+            return "dormupdate";
+        }
+    }
 }

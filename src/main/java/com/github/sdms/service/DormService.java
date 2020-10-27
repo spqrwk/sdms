@@ -33,7 +33,7 @@ public interface DormService {
      * @param dorm 实例对象
      * @return 实例对象
      */
-    Dorm insert(Dorm dorm);
+    void insert(Dorm dorm);
 
     /**
      * 修改数据
@@ -41,7 +41,7 @@ public interface DormService {
      * @param dorm 实例对象
      * @return 实例对象
      */
-    Dorm update(Dorm dorm);
+    void update(Dorm dorm);
 
     /**
      * 通过主键删除数据

@@ -64,9 +64,8 @@ public class DormServiceImpl implements DormService {
      * @return 实例对象
      */
     @Override
-    public Dorm insert(Dorm dorm) {
+    public void insert(Dorm dorm) {
         this.dormDao.insert(dorm);
-        return dorm;
     }
 
     /**
@@ -76,9 +75,8 @@ public class DormServiceImpl implements DormService {
      * @return 实例对象
      */
     @Override
-    public Dorm update(Dorm dorm) {
+    public void update(Dorm dorm) {
         this.dormDao.update(dorm);
-        return this.queryById(dorm.getId());
     }
 
     /**

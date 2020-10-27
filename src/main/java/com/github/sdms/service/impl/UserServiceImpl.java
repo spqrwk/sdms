@@ -69,9 +69,8 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
-    public User insert(User user) {
+    public void insert(User user) {
         this.userDao.insert(user);
-        return user;
     }
 
     /**
@@ -81,9 +80,8 @@ public class UserServiceImpl implements UserService {
      * @return 实例对象
      */
     @Override
-    public User update(User user) {
+    public void update(User user) {
         this.userDao.update(user);
-        return this.queryById(user.getId());
     }
 
     /**

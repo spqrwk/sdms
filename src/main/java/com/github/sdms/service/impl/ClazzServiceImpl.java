@@ -1,6 +1,7 @@
 package com.github.sdms.service.impl;
 
 import com.github.sdms.dao.ClazzDao;
+import com.github.sdms.dao.StuDao;
 import com.github.sdms.entity.Clazz;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.ClazzService;
@@ -21,6 +22,9 @@ import java.util.List;
 public class ClazzServiceImpl implements ClazzService {
     @Autowired
     private ClazzDao clazzDao;
+
+    @Autowired
+    private StuDao stuDao;
 
     /**
      * 通过ID查询单条数据
@@ -85,7 +89,8 @@ public class ClazzServiceImpl implements ClazzService {
      * @return 是否成功
      */
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(Long id, String clazzCode) {
         clazzDao.deleteById(id);
+        stuDao.delStu(clazzCode);
     }
 }

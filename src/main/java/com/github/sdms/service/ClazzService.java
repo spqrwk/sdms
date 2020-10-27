@@ -50,6 +50,6 @@ public interface ClazzService {
      * @param id 主键
      * @return 是否成功
      */
-    void deleteById(Long id);
+    void deleteById(Long id, String clazzCode);
 
 }

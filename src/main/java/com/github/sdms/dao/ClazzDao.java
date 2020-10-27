@@ -55,4 +55,6 @@ public interface ClazzDao {
      */
     int deleteById(Long id);
 
+    Clazz view(@Param("id") Long id);
+
 }

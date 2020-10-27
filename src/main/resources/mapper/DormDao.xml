@@ -13,10 +13,12 @@
 
     <!--查询单个-->
     <select id="queryById" resultMap="DormMap">
-        select
-          id, code, monthly_rent, apt_name, tenant_limit, current_tenant
-        from sdmsdb.sdms_dorm
-        where id = #{id}
+        SELECT
+            *
+        FROM
+            sdms_dorm
+        WHERE
+            id = #{id}
     </select>
 
     <!--查询指定行数据-->
@@ -37,33 +39,6 @@
             LIMIT #{startIndex}, #{pageSize}
         </if>
     </select>
-<!--
-    &lt;!&ndash;通过实体作为筛选条件查询&ndash;&gt;
-    <select id="queryAll" resultMap="DormMap">
-        select
-        id, code, monthly_rent, apt_name, tenant_limit, current_tenant
-        from sdmsdb.sdms_dorm
-        <where>
-            <if test="id != null">
-                and id = #{id}
-            </if>
-            <if test="code != null and code != ''">
-                and code = #{code}
-            </if>
-            <if test="monthlyRent != null">
-                and monthly_rent = #{monthlyRent}
-            </if>
-            <if test="aptName != null and aptName != ''">
-                and apt_name = #{aptName}
-            </if>
-            <if test="tenantLimit != null">
-                and tenant_limit = #{tenantLimit}
-            </if>
-            <if test="currentTenant != null">
-                and current_tenant = #{currentTenant}
-            </if>
-        </where>
-    </select>-->
 
     <select id="countByLimit" resultType="java.lang.Integer">
         SELECT
@@ -85,55 +60,30 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
-        values (#{code}, #{monthlyRent}, #{aptName}, #{tenantLimit}, #{currentTenant})
-    </insert>
-
-    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.tenantLimit}, #{entity.currentTenant})
-        </foreach>
-    </insert>
-
-    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
-        insert into sdmsdb.sdms_dorm(code, monthly_rent, apt_name, tenant_limit, current_tenant)
-        values
-        <foreach collection="entities" item="entity" separator=",">
-            (#{entity.code}, #{entity.monthlyRent}, #{entity.aptName}, #{entity.tenantLimit}, #{entity.currentTenant})
-        </foreach>
-        on duplicate key update
-        code = values(code) , monthly_rent = values(monthly_rent) , apt_name = values(apt_name) , tenant_limit =
-        values(tenant_limit) , current_tenant = values(current_tenant)
+        INSERT INTO
+            sdms_dorm(code, monthly_rent, apt_name, tenant_limit)
+        VALUES
+            (#{code}, #{monthlyRent}, #{aptName}, #{tenantLimit})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update sdmsdb.sdms_dorm
-        <set>
-            <if test="code != null and code != ''">
-                code = #{code},
-            </if>
-            <if test="monthlyRent != null">
-                monthly_rent = #{monthlyRent},
-            </if>
-            <if test="aptName != null and aptName != ''">
-                apt_name = #{aptName},
-            </if>
-            <if test="tenantLimit != null">
-                tenant_limit = #{tenantLimit},
-            </if>
-            <if test="currentTenant != null">
-                current_tenant = #{currentTenant},
-            </if>
-        </set>
-        where id = #{id}
+        UPDATE
+            sdms_dorm
+        <trim prefix="set" suffix="where id = #{id}" suffixOverrides=",">
+            <if test="code != null">code = #{code},</if>
+            <if test="monthlyRent != null">monthly_rent = #{monthlyRent},</if>
+            <if test="aptName != null">apt_name = #{aptName},</if>
+            <if test="tenantLimit != null">tenant_limit = #{tenantLimit},</if>
+        </trim>
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from sdmsdb.sdms_dorm where id = #{id}
+        DELETE FROM
+            sdms_dorm
+        WHERE
+            id = #{id}
     </delete>
 
 </mapper>

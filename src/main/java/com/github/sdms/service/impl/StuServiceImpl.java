@@ -8,6 +8,7 @@ import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -39,11 +40,12 @@ public class StuServiceImpl implements StuService {
      * @return 对象列表
      */
     @Override
-    public Page<Stu> queryAllByLimit(Integer currentPage, String paymentDeadline, String aptName, String tchName, String clazzCode){
+    public Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String tchName, String clazzCode){
         Page<Stu> pageBean = new Page<>(currentPage);
 
         HashMap<String, Object> params = new HashMap<>();
-        params.put("paymentDeadline", paymentDeadline);
+        params.put("startDate", startDate);
+        params.put("endDate", endDate);
         params.put("aptName", aptName);
         params.put("tchName", tchName);
         params.put("clazzCode", clazzCode);
@@ -67,9 +69,8 @@ public class StuServiceImpl implements StuService {
      * @return 实例对象
      */
     @Override
-    public Stu insert(Stu stu) {
+    public void insert(Stu stu) {
         this.stuDao.insert(stu);
-        return stu;
     }
 
     /**
@@ -79,9 +80,8 @@ public class StuServiceImpl implements StuService {
      * @return 实例对象
      */
     @Override
-    public Stu update(Stu stu) {
+    public void update(Stu stu) {
         this.stuDao.update(stu);
-        return this.queryById(stu.getId());
     }
 
     /**
