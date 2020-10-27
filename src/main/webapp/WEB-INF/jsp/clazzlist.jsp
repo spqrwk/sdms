@@ -463,9 +463,24 @@ MAIN CONTENT LAYOUT
                                     <td class="font-w600">${clazz.code}</td>
                                     <td class="font-w600">${clazz.tchName}</td>
                                     <td class="text-center">
-                                        <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="查看">
-                                            <i class="fa fa-user"></i>
-                                        </button>
+                                        <div class="btn-group">
+                                            <a href="${realPath}/clazz/view?id=${clazz.id}">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="查看">
+                                                    <i class="fa fa-user"></i>
+                                                </button>
+                                            </a>
+                                            <a href="${realPath}/clazz/toupdate?id=${clazz.id}">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="修改">
+                                                    <i class="fa fa-pencil"></i>
+
+                                                </button>
+                                            </a>
+                                            <a href="${realPath}/">
+                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="删除">
+                                                    <i class="fa fa-times"></i>
+                                                </button>
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             </c:forEach>
