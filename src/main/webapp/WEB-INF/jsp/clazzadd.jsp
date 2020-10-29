@@ -435,12 +435,12 @@ MAIN CONTENT LAYOUT
             <input type="hidden" id="path" value="${realPath}">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/clazz/addnew" method="post">
+                    <form action="${realPath}/clazz/addnew" method="post" id="clazzadd">
                         <div class="form-group row">
-                            <label class="col-12" for="code">班级编号</label>
+                            <label class="col-12" for="clazzCode">班级编号</label>
                             <div class="col-md-9">
-<%--                                <input type="text" class="form-control" id="example-text-input" name="code" placeholder="请输入班级编号...">--%>
-                                <select name="code" class="form-control" id="code" ></select>
+                                <input type="text" class="form-control" id="clazzCode" name="code" placeholder="请输入班级编号...">
+<%--                                <select name="code" class="form-control" id="code" ></select>--%>
                                 <f color="red"></f>
                             </div>
                         </div>
@@ -455,7 +455,7 @@ MAIN CONTENT LAYOUT
                         ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" class="btn btn-alt-primary" id="subbutton">提交</button>
                             </div>
                         </div>
                     </form>
@@ -481,38 +481,13 @@ MAIN CONTENT LAYOUT
     <!-- END Footer -->
 </div>
 <!-- END Page Container -->
-
-<!--
-    Codebase JS Core
-
-    Vital libraries and plugins used in all pages. You can choose to not include this file if you would like
-    to handle those dependencies through webpack. Please check out ${realPath}/statics/assets/_es6/main/bootstrap.js for more info.
-
-    If you like, you could also include them separately directly from the ${realPath}/statics/assets/js/core folder in the following
-    order. That can come in handy if you would like to include a few of them (eg jQuery) from a CDN.
-
-    ${realPath}/statics/assets/js/core/jquery.min.js
-    ${realPath}/statics/assets/js/core/bootstrap.bundle.min.js
-    ${realPath}/statics/assets/js/core/simplebar.min.js
-    ${realPath}/statics/assets/js/core/jquery-scrollLock.min.js
-    ${realPath}/statics/assets/js/core/jquery.appear.min.js
-    ${realPath}/statics/assets/js/core/jquery.countTo.min.js
-    ${realPath}/statics/assets/js/core/js.cookie.min.js
--->
 <script src="${realPath}/statics/assets/js/codebase.core.min.js"></script>
-
-<!--
-    Codebase JS
-
-    Custom functionality including Blocks/Layout API as well as other vital and optional helpers
-    webpack is putting everything together at ${realPath}/statics/assets/_es6/main/app.js
--->
 <script src="${realPath}/statics/assets/js/codebase.app.min.js"></script>
 
 <!-- Page JS Plugins -->
 <script src="${realPath}/statics/assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
 <script src="${realPath}/statics/localjs/clazzadd.js"></script>
-<script src="${realPath}/statics/localjs/jquery-1.8.3.min.js"></script>
+<script src="${realPath}/statics/localjs/jquery-1.9.1.min.js"></script>
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
 <script src="${realPath}/statics/js/rollpage.js"></script>

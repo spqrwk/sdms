@@ -108,4 +108,9 @@ public class ClazzServiceImpl implements ClazzService {
     public List<Clazz> queryAllClazz() {
         return clazzDao.queryAllClazz();
     }
+
+    @Override
+    public int querybycode(String clazzCode) {
+        return clazzDao.queryByClazzCode(clazzCode);
+    }
 }

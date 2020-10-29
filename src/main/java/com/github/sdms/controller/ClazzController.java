@@ -106,4 +106,19 @@ public class ClazzController {
         map.put("data", clazzList);
         return JSON.toJSONString(map);
     }
+
+
+    @ResponseBody
+    @RequestMapping("querybycode")
+    public String querybycode(String code){
+        System.out.println(code);
+        HashMap<String, Object> map = new HashMap<>();
+       int i= clazzService.querybycode(code);
+       if (i == 0){
+           map.put("code",0);
+       }else{
+           map.put("code",1);
+       }
+        return JSON.toJSONString(map);
+    }
 }

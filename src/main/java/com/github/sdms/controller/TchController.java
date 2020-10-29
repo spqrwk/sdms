@@ -103,12 +103,16 @@ public class TchController {
     @ResponseBody
     @RequestMapping("/queryalltch")
     public String queryAllTch() {
-        List<Tch> tchList = tchService.queryAllTch();
-        HashMap<String, Object> map = new HashMap<>();
-
-        map.put("code", 0);
-        map.put("date", tchList);
-
+        HashMap<String, Object> map = null;
+        map = new HashMap<>();
+        try {
+            List<Tch> tchList = tchService.queryAllTch();
+            map.put("code", 0);
+            map.put("data", tchList);
+        } catch (Exception e) {
+            map.put("code", 1);
+            e.printStackTrace();
+        }
         return JSON.toJSONString(map);
     }
 }
