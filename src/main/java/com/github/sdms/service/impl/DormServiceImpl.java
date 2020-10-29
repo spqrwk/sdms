@@ -101,4 +101,9 @@ public class DormServiceImpl implements DormService {
     public List<Dorm> queryAllAptName() {
         return dormDao.queryAllAptName();
     }
+
+    @Override
+    public List<Dorm> queryAllByAptName(String aptName) {
+        return dormDao.queryAllByAptName(aptName);
+    }
 }

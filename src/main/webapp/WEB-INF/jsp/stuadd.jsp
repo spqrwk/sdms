@@ -21,15 +21,21 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">班级编号</label>
+                            <label class="col-12" for="clazzCode">班级编号</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="clazzCode" placeholder="请输入班级编号...">
+                                <select type="text" class="form-control" name="clazzCode" id="clazzCode" placeholder="请输入班级编号..."></select>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">宿舍</label>
+                            <label class="col-12" for="aptName">公寓</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="dormId" placeholder="请选择宿舍...">
+                                <select type="text" class="form-control" id="aptName" name="aptName" placeholder="请选择公寓..."></select>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="dormStatus">
+                            <label class="col-12" for="dormCode">宿舍</label>
+                            <div class="col-md-9">
+                                <select type="text" class="form-control" id="dormCode" name="dormId" placeholder="请选择宿舍..."></select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -66,3 +72,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/stuadd.js"></script>

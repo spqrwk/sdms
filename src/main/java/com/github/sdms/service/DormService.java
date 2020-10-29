@@ -52,4 +52,6 @@ public interface DormService {
     boolean deleteById(Long id);
 
     List<Dorm> queryAllAptName();
+
+    List<Dorm> queryAllByAptName(String aptName);
 }

@@ -55,4 +55,6 @@ public interface DormDao {
     int deleteById(Long id);
 
     List<Dorm> queryAllAptName();
+
+    List<Dorm> queryAllByAptName(String aptName);
 }

@@ -103,6 +103,19 @@ public class DormController {
     public String queryAllAptName() {
         List<Dorm> dormList = dormService.queryAllAptName();
         HashMap<String, Object> map = new HashMap<>();
+        System.out.println(dormList);
+        map.put("code", 0);
+        map.put("data", dormList);
+
+        return JSON.toJSONString(map);
+    }
+
+    @ResponseBody
+    @RequestMapping("queryallbyaptname")
+    public String queryAllByAptName(String aptName) {
+        List<Dorm> dormList = dormService.queryAllByAptName(aptName);
+        System.out.println(dormList);
+        HashMap<String, Object> map = new HashMap<>();
 
         map.put("code", 0);
         map.put("data", dormList);

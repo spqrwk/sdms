@@ -58,8 +58,17 @@
         </if>
     </select>
 
-    <select id="queryAllAptName" resultType="com.github.sdms.entity.Dorm">
+    <select id="queryAllAptName" resultMap="DormMap">
         SELECT DISTINCT apt_name FROM `sdms_dorm`
+    </select>
+
+    <select id="queryAllByAptName" resultMap="DormMap">
+        SELECT
+            *
+        FROM
+            sdms_dorm sd
+        WHERE
+            sd.apt_name LIKE CONCAT('%', #{aptName}, '%')
     </select>
 
     <!--新增所有列-->
