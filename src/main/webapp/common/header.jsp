@@ -404,3 +404,4 @@ MAIN CONTENT LAYOUT
             </div>
         </div>
         <!-- END Hero -->
+        <input type="hidden" id="path" name="path" value="${pageContext.request.contextPath}">

@@ -50,6 +50,7 @@ webpack is putting everything together at ${realPath}/statics/assets/_es6/main/a
 
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
+<script src="${realPath}/statics/localjs/common.js"></script>
 <script src="${realPath}/statics/js/rollpage.js"></script>
 </body>
 </html>

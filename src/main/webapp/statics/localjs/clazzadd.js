@@ -1,7 +1,6 @@
-var path = $('#path').val();
+
 $(function () {
-    $("#clazzCode").next().html("*");
-    $("#tchId").next().html("*");
+
 
 
     $.ajax({
@@ -19,7 +18,7 @@ $(function () {
                     }
                     $("#tchId").html(options);
                 } else {
-                    $("#tchId").next().html(" 获取用户角色列表error");
+                    $("#tchId").next().html(" 空数据");
                 }
 
             }
@@ -29,26 +28,32 @@ $(function () {
     })
 
     $("#clazzCode").bind("blur", function () {
-        $.ajax({
-            type: "GET",
-            url: path + "/clazz/querybycode",
-            data: {"code": $("#clazzCode").val()},
-            dataType: "JSON",
-            success: function (result) {
-                if (result != null) {
-                    if (result.code == "0") {
-                        $("#clazzCode").next().html("");
-                        $("#clazzCode").attr("isallowsub", "true");
-                    } else {
-                        $("#clazzCode").next().html(" 班级编号已存在");
-                        $("#clazzCode").attr("isallowsub", "false");
-                    }
+        if($("#clazzCode").val().trim()!=""){
+            $.ajax({
+                type: "GET",
+                url: path + "/clazz/querybycode",
+                data: {"code": $("#clazzCode").val()},
+                dataType: "JSON",
+                success: function (result) {
+                    if (result != null) {
+                        if (result.code == "0") {
+                            $("#clazzCode").next().html("");
+                            $("#clazzCode").attr("isallowsub", "true");
+                        } else {
+                            $("#clazzCode").next().html(" 班级编号已存在");
+                            $("#clazzCode").attr("isallowsub", "false");
+                        }
 
+                    }
+                }, error: function (result) {
+                    $("#tchId").next().html(" 获取连接服务器异常");
                 }
-            }, error: function (result) {
-                $("#tchId").next().html(" 获取连接服务器异常");
-            }
-        })
+            })
+        }else{
+            $("#clazzCode").next().html(" 班级编号不能为空");
+            $("#clazzCode").attr("isallowsub", "false");
+        }
+
     })
 
     $("#subbutton").bind("click", function () {
