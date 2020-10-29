@@ -60,6 +60,7 @@ public class StuController {
     public String add(Stu stu, Model model) {
         try {
             System.out.println(stu);
+            System.out.println(stu);
             stuService.insert(stu);
             model.addAttribute("addResult", "添加成功！");
         } catch (Exception e) {

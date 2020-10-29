@@ -66,3 +66,5 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script src="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script>jQuery(function(){ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>

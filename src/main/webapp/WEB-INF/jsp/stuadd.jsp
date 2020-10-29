@@ -7,17 +7,19 @@
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/stu/addnew" method="post">
+                    <form action="${realPath}/stu/addnew" method="post" id="newstu">
                         <div class="form-group row">
                             <label class="col-12">学生姓名</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="name" placeholder="请输出学生姓名...">
+                                <input type="text" class="form-control" id="stuname" name="name" placeholder="请输出学生姓名...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-12">身份证号</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="idNo" placeholder="请输入身份证号...">
+                                <input type="text" class="form-control" id="idno" name="idNo" placeholder="请输入身份证号...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -36,6 +38,7 @@
                             <label class="col-12" for="dormCode">宿舍</label>
                             <div class="col-md-9">
                                 <select type="text" class="form-control" id="dormCode" name="dormId" placeholder="请选择宿舍..."></select>
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -63,7 +66,7 @@
                         ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" id="subbutton" class="btn btn-alt-primary">提交</button>
                             </div>
                         </div>
                     </form>
@@ -73,3 +76,5 @@
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
 <script type="text/javascript" src="${realPath}/statics/localjs/stuadd.js"></script>
+<script src="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script>jQuery(function(){ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>
