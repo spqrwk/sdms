@@ -58,6 +58,11 @@ public class TchServiceImpl implements TchService {
         return pageBean;
     }
 
+    @Override
+    public List<Tch> queryAllTch() {
+        return tchDao.queryAllTch();
+    }
+
     /**
      * 新增数据
      *

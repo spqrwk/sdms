@@ -34,6 +34,13 @@
         </if>
     </select>
 
+    <select id="queryAllTch" resultMap="TchMap">
+        SELECT
+            *
+        FROM
+            sdms_tch
+    </select>
+
     <!--根据条件查询记录数-->
     <select id="countByLimit" parameterType="map" resultType="java.lang.Integer">
         SELECT

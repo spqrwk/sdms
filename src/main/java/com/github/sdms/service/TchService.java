@@ -29,6 +29,7 @@ public interface TchService {
      */
     Page<Tch> queryAllByLimit(Integer currentPage, String tchName);
 
+    List<Tch> queryAllTch();
     /**
      * 新增数据
      *

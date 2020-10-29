@@ -58,6 +58,10 @@
         </if>
     </select>
 
+    <select id="queryAllAptName" resultType="com.github.sdms.entity.Dorm">
+        SELECT DISTINCT apt_name FROM `sdms_dorm`
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO

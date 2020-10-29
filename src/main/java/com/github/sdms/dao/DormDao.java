@@ -54,4 +54,5 @@ public interface DormDao {
      */
     int deleteById(Long id);
 
+    List<Dorm> queryAllAptName();
 }
