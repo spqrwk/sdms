@@ -54,4 +54,5 @@ public interface ClazzService {
      */
     void deleteById(Long id, String clazzCode);
 
+    List<Clazz> queryAllClazz();
 }

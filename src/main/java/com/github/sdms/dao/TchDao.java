@@ -29,6 +29,8 @@ public interface TchDao {
      */
     List<Tch> queryAllByLimit(Map<String, Object> map);
 
+    List<Tch> queryAllTch();
+
     /**
      * 根据条件查询记录数
      * @param map

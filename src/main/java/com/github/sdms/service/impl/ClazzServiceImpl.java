@@ -103,4 +103,9 @@ public class ClazzServiceImpl implements ClazzService {
         clazzDao.deleteById(id);
         stuDao.delStu(clazzCode);
     }
+
+    @Override
+    public List<Clazz> queryAllClazz() {
+        return clazzDao.queryAllClazz();
+    }
 }

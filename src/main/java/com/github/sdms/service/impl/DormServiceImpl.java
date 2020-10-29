@@ -96,4 +96,9 @@ public class DormServiceImpl implements DormService {
     public boolean deleteById(Long id) {
         return this.dormDao.deleteById(id) > 0;
     }
+
+    @Override
+    public List<Dorm> queryAllAptName() {
+        return dormDao.queryAllAptName();
+    }
 }

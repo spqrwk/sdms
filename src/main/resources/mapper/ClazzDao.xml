@@ -68,6 +68,14 @@
             code = #{clazzCode}
     </select>
 
+    <select id="queryAllClazz" resultType="com.github.sdms.entity.Clazz">
+        SELECT
+            sc.*, st.name AS tchName
+        FROM
+            sdms_clazz AS sc
+        LEFT JOIN sdms_tch AS st ON sc.tch_id = st.id
+    </select>
+
     <!--新增所有列-->
     <insert id="insert">
         INSERT INTO
@@ -98,5 +106,6 @@
         DELETE FROM sdms_clazz
         WHERE id = #{id}
     </delete>
+
 
 </mapper>

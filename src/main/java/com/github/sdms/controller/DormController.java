@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -95,5 +96,17 @@ public class DormController {
             model.addAttribute("updateResult", "修改失败！" + e.getMessage());
             return "dormupdate";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping("queryallaptname")
+    public String queryAllAptName() {
+        List<Dorm> dormList = dormService.queryAllAptName();
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("code", 0);
+        map.put("data", dormList);
+
+        return JSON.toJSONString(map);
     }
 }

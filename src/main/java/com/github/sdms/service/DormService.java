@@ -51,4 +51,5 @@ public interface DormService {
      */
     boolean deleteById(Long id);
 
+    List<Dorm> queryAllAptName();
 }

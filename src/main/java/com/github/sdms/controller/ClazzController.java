@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -93,5 +94,16 @@ public class ClazzController {
             model.addAttribute("updateResult", "修改失败！" + e.getMessage());
             return "clazzupdate";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping("queryallclazz")
+    public String queryAllClazz() {
+        List<Clazz> clazzList = clazzService.queryAllClazz();
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("code", 0);
+        map.put("data", clazzList);
+        return JSON.toJSONString(map);
     }
 }

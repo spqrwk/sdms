@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -97,5 +98,17 @@ public class TchController {
             model.addAttribute("updateResult", "修改失败！" + e.getMessage());
             return "tchupdate";
         }
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryalltch")
+    public String queryAllTch() {
+        List<Tch> tchList = tchService.queryAllTch();
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("code", 0);
+        map.put("date", tchList);
+
+        return JSON.toJSONString(map);
     }
 }
