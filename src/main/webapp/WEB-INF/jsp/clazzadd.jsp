@@ -432,19 +432,24 @@ MAIN CONTENT LAYOUT
 
         <!-- Page Content -->
         <div class="content">
+            <input type="hidden" id="path" value="${realPath}">
             <div class="pt-50 pb-20">
                 <div class="block-content">
                     <form action="${realPath}/clazz/addnew" method="post">
                         <div class="form-group row">
-                            <label class="col-12" for="example-text-input">班级编号</label>
+                            <label class="col-12" for="code">班级编号</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="example-text-input" name="code" placeholder="请输入班级编号...">
+<%--                                <input type="text" class="form-control" id="example-text-input" name="code" placeholder="请输入班级编号...">--%>
+                                <select name="code" class="form-control" id="code" ></select>
+                                <f color="red"></f>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12" for="example-text-input">班主任</label>
+                            <label class="col-12" for="tchId">班主任</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="tchId" placeholder="请输入班主任姓名...">
+<%--                                <input type="text" class="form-control" name="tchId" placeholder="请输入班主任姓名...">--%>
+                                    <select name="tchId" class="form-control" id="tchId"></select>
+                                    <f color="red"></f>
                             </div>
                         </div>
                         ${addResult}
@@ -506,7 +511,8 @@ MAIN CONTENT LAYOUT
 
 <!-- Page JS Plugins -->
 <script src="${realPath}/statics/assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
-
+<script src="${realPath}/statics/localjs/clazzadd.js"></script>
+<script src="${realPath}/statics/localjs/jquery-1.8.3.min.js"></script>
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
 <script src="${realPath}/statics/js/rollpage.js"></script>
