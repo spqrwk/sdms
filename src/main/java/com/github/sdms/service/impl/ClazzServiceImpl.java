@@ -2,6 +2,7 @@ package com.github.sdms.service.impl;
 
 import com.github.sdms.dao.ClazzDao;
 import com.github.sdms.dao.StuDao;
+import com.github.sdms.dao.TchDao;
 import com.github.sdms.entity.Clazz;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.ClazzService;
@@ -23,7 +24,8 @@ import java.util.List;
 public class ClazzServiceImpl implements ClazzService {
     @Autowired
     private ClazzDao clazzDao;
-
+    @Autowired
+    private TchDao tchDao;
     @Autowired
     private StuDao stuDao;
 
@@ -35,7 +37,9 @@ public class ClazzServiceImpl implements ClazzService {
      */
     @Override
     public Clazz queryById(Long id) {
-        return this.clazzDao.queryById(id);
+        Clazz clazz = clazzDao.queryById(id);
+        clazz.setTchName(tchDao.queryById(clazz.getTchId()).getName());
+        return clazz;
     }
 
     /**

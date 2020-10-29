@@ -31,9 +31,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="${realPath}/statics/assets/media/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
 
-    <!-- Page JS Plugins CSS -->
-    <link rel="stylesheet" href="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
-
     <!-- Stylesheets -->
 
     <!-- Fonts and Codebase framework -->
@@ -437,60 +434,25 @@ MAIN CONTENT LAYOUT
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/stu/addnew" method="post">
                         <div class="form-group row">
-                            <label class="col-12">学生姓名</label>
+                            <label class="col-12">班级编码</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="name" placeholder="请输出学生姓名...">
+                                <div class="form-control-plaintext">${clazz.code}</div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">身份证号</label>
+                            <label class="col-12">班主任姓名</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="idNo" placeholder="请输入身份证号...">
+                                <div class="form-control-plaintext">${clazz.tchName}</div>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            <label class="col-12">班级编号</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="clazzCode" placeholder="请输入班级编号...">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-12">宿舍</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="dormId" placeholder="请选择宿舍...">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-8">
-                                <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请输入日期">
-                                    <label for="example-datepicker6">入住时间</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-lg-8">
-                                <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请输入日期">
-                                    <label for="example-datepicker6-1">缴费截止日期</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-12">Text</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="remarks" placeholder="请输入备注...">
-                            </div>
-                        </div>
-                        ${addResult}
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                    <div align="center">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-alt-secondary" data-wizard="prev" onclick="javascript:history.back(-1);">
+                            <i class="fa fa-angle-left mr-5"></i> 返回
+                        </button>
+                    </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -544,15 +506,8 @@ MAIN CONTENT LAYOUT
 <!-- Page JS Plugins -->
 <script src="${realPath}/statics/assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
 
-<!-- Page JS Plugins -->
-<script src="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
-
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
 <script src="${realPath}/statics/js/rollpage.js"></script>
-
-<!-- Page JS Helpers (BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs plugins) -->
-<script>jQuery(function(){ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>
-
 </body>
 </html>
