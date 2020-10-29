@@ -465,7 +465,7 @@ MAIN CONTENT LAYOUT
                         <div class="form-group row">
                             <div class="col-lg-8">
                                 <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="dd-mm-yyyy">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择入住时间">
                                     <label for="example-datepicker6">入住时间</label>
                                 </div>
                             </div>
@@ -473,13 +473,13 @@ MAIN CONTENT LAYOUT
                         <div class="form-group row">
                             <div class="col-lg-8">
                                 <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="dd-mm-yyyy">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择缴费截止日期">
                                     <label for="example-datepicker6-1">缴费截止日期</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">Text</label>
+                            <label class="col-12">备注</label>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" name="remarks" placeholder="请输入备注...">
                             </div>
@@ -487,7 +487,7 @@ MAIN CONTENT LAYOUT
                         ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">Submit</button>
+                                <button type="submit" class="btn btn-alt-primary">提交</button>
                             </div>
                         </div>
                     </form>

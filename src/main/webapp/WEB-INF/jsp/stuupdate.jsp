@@ -31,6 +31,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="${realPath}/statics/assets/media/favicons/apple-touch-icon-180x180.png">
     <!-- END Icons -->
 
+    <!-- Page JS Plugins CSS -->
+    <link rel="stylesheet" href="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+
     <!-- Stylesheets -->
 
     <!-- Fonts and Codebase framework -->
@@ -89,35 +92,35 @@ MAIN CONTENT LAYOUT
 -->
 <div id="page-container" class="sidebar-mini sidebar-o sidebar-inverse enable-page-overlay side-scroll page-header-fixed page-header-glass page-header-inverse main-content-boxed">
     <!-- Side Overlay-->
-    <%--    <aside id="side-overlay">--%>
-    <%--        <!-- Side Header -->--%>
-    <%--        <div class="content-header content-header-fullrow">--%>
-    <%--            <div class="content-header-section align-parent">--%>
-    <%--                <!-- Close Side Overlay -->--%>
-    <%--                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--%>
-    <%--                <button type="button" class="btn btn-circle btn-dual-secondary align-v-r" data-toggle="layout" data-action="side_overlay_close">--%>
-    <%--                    <i class="fa fa-times text-danger"></i>--%>
-    <%--                </button>--%>
-    <%--                <!-- END Close Side Overlay -->--%>
+<%--    <aside id="side-overlay">--%>
+<%--        <!-- Side Header -->--%>
+<%--        <div class="content-header content-header-fullrow">--%>
+<%--            <div class="content-header-section align-parent">--%>
+<%--                <!-- Close Side Overlay -->--%>
+<%--                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->--%>
+<%--                <button type="button" class="btn btn-circle btn-dual-secondary align-v-r" data-toggle="layout" data-action="side_overlay_close">--%>
+<%--                    <i class="fa fa-times text-danger"></i>--%>
+<%--                </button>--%>
+<%--                <!-- END Close Side Overlay -->--%>
 
-    <%--                <!-- User Info -->--%>
-    <%--                <div class="content-header-item">--%>
-    <%--                    <a class="img-link mr-5" href="${realPath}/user/view">--%>
-    <%--                        <img class="img-avatar img-avatar32" src="${realPath}/statics/assets/media/avatars/avatar15.jpg" alt="">--%>
-    <%--                    </a>--%>
-    <%--                    <a class="align-middle link-effect text-primary-dark font-w600" href="${realPath}/user/view">John Smith</a>--%>
-    <%--                </div>--%>
-    <%--                <!-- END User Info -->--%>
-    <%--            </div>--%>
-    <%--        </div>--%>
-    <%--        <!-- END Side Header -->--%>
+<%--                <!-- User Info -->--%>
+<%--                <div class="content-header-item">--%>
+<%--                    <a class="img-link mr-5" href="${realPath}/user/view">--%>
+<%--                        <img class="img-avatar img-avatar32" src="${realPath}/statics/assets/media/avatars/avatar15.jpg" alt="">--%>
+<%--                    </a>--%>
+<%--                    <a class="align-middle link-effect text-primary-dark font-w600" href="${realPath}/user/view">John Smith</a>--%>
+<%--                </div>--%>
+<%--                <!-- END User Info -->--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--        <!-- END Side Header -->--%>
 
-    <%--        <!-- Side Content -->--%>
-    <%--        <div class="content-side">--%>
+<%--        <!-- Side Content -->--%>
+<%--        <div class="content-side">--%>
 
-    <%--        </div>--%>
-    <%--        <!-- END Side Content -->--%>
-    <%--    </aside>--%>
+<%--        </div>--%>
+<%--        <!-- END Side Content -->--%>
+<%--    </aside>--%>
     <!-- END Side Overlay -->
 
     <!-- Sidebar -->
@@ -388,9 +391,9 @@ MAIN CONTENT LAYOUT
 
                 <!-- Toggle Side Overlay -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
-                <%--                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">--%>
-                <%--                    <i class="fa fa-tasks"></i>--%>
-                <%--                </button>--%>
+<%--                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="side_overlay_toggle">--%>
+<%--                    <i class="fa fa-tasks"></i>--%>
+<%--                </button>--%>
                 <!-- END Toggle Side Overlay -->
             </div>
             <!-- END Right Section -->
@@ -433,67 +436,66 @@ MAIN CONTENT LAYOUT
         <!-- Page Content -->
         <div class="content">
             <div class="pt-50 pb-20">
-                <!-- Dynamic Table Full -->
-                <div class="block">
-                    <div class="block-header block-header-default">
-                        <div class="block-content block-content-full">
-                            <form class="form-inline" action="${realPath}/user/list" method="post">
-                                <input type="hidden" name="p" value="1"/>
-                                <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="userCode" placeholder="请输入用户编号..." value="${clazzCode}">
-                                <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="username" placeholder="请输入昵称..." value="${username}">
-                                <button type="submit" class="btn btn-alt-primary">查询</button>
-                            </form>
+                <div class="block-content">
+                    <form action="${realPath}/stu/addnew" method="post">
+                        <div class="form-group row">
+                            <label class="col-12">学生姓名</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="name" placeholder="请输出学生姓名...">
+                            </div>
                         </div>
-                    </div>
-                    <div class="block-content block-content-full">
-                        <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
-                        <table class="table table-bordered table-striped table-vcenter js-dataTable-full">
-                            <thead>
-                            <tr>
-                                <th class="text-center">序号</th>
-                                <th class="d-none d-sm-table-cell" class="text-center">用户编码</th>
-                                <th class="d-none d-sm-table-cell" class="text-center">昵称</th>
-                                <th class="text-center" style="width: 15%;">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach items="${pageBean.rows}" var="user" varStatus="status">
-                                <tr>
-                                    <td class="text-center">${status.count}</td>
-                                    <td class="font-w600">${user.userCode}</td>
-                                    <td class="font-w600">${user.username}</td>
-                                    <td class="text-center">
-                                        <div class="btn-group">
-                                            <a href="${realPath}/user/view?id=${user.id}">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="查看">
-                                                    <i class="fa fa-user"></i>
-                                                </button>
-                                            </a>
-                                            <a href="${realPath}/user/toupdate?id=${user.id}">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="修改">
-                                                    <i class="fa fa-pencil"></i>
-
-                                            </button>
-                                            </a>
-                                            <a href="${realPath}/">
-                                                <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="删除">
-                                                    <i class="fa fa-times"></i>
-                                                </button>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="form-group row">
+                            <label class="col-12">身份证号</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="idNo" placeholder="请输入身份证号...">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">班级编号</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="clazzCode" placeholder="请输入班级编号...">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">宿舍</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="dormId" placeholder="请选择宿舍...">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-8">
+                                <div class="form-material">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择入住时间">
+                                    <label for="example-datepicker6">入住时间</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-lg-8">
+                                <div class="form-material">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择缴费截止日期">
+                                    <label for="example-datepicker6-1">缴费截止日期</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-12">备注</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="remarks" placeholder="请输入备注...">
+                            </div>
+                        </div>
+                        ${updateResult}
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <!-- END Dynamic Table Full -->
             </div>
         </div>
         <!-- END Page Content -->
+
     </main>
     <!-- END Main Container -->
 
@@ -542,8 +544,15 @@ MAIN CONTENT LAYOUT
 <!-- Page JS Plugins -->
 <script src="${realPath}/statics/assets/js/plugins/chartjs/Chart.bundle.min.js"></script>
 
+<!-- Page JS Plugins -->
+<script src="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+
 <!-- Page JS Code -->
 <script src="${realPath}/statics/assets/js/pages/be_pages_dashboard.min.js"></script>
 <script src="${realPath}/statics/js/rollpage.js"></script>
+
+<!-- Page JS Helpers (BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Input + Range Sliders + Tags Inputs plugins) -->
+<script>jQuery(function(){ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>
+
 </body>
 </html>

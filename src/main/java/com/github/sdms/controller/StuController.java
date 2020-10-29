@@ -88,9 +88,8 @@ public class StuController {
     }
 
     @RequestMapping("update")
-    public String update(Long id, HttpServletRequest request, Model model) {
+    public String update(Stu stu, HttpServletRequest request, Model model) {
         try {
-            Stu stu = stuService.queryById(id);
             stuService.update(stu);
 
             return "redirect:/stu/list";

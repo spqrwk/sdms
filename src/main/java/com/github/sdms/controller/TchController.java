@@ -87,9 +87,8 @@ public class TchController {
     }
 
     @RequestMapping("update")
-    public String update(Long id, HttpServletRequest request, Model model) {
+    public String update(Tch tch, Long id, HttpServletRequest request, Model model) {
         try {
-            Tch tch = tchService.queryById(id);
             tchService.update(tch);
 
             return "redirect:/tch/list";

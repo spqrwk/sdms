@@ -87,7 +87,6 @@ public class DormController {
     @RequestMapping("update")
     public String update(Dorm dorm,Model model) {
         try {
-            System.out.println(dorm);
             dormService.update(dorm);
 
             return "redirect:/dorm/list";

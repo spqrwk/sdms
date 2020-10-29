@@ -448,13 +448,13 @@ MAIN CONTENT LAYOUT
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">每月租金</label>
+                            <label class="col-12">单月费用</label>
                             <div class="col-md-9">
                                 <div class="form-control-plaintext">${dorm.monthlyRent}</div>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12">最大可住人数</label>
+                            <label class="col-12">最大居住人数</label>
                             <div class="col-md-9">
                                 <div class="form-control-plaintext">${dorm.tenantLimit}</div>
                             </div>

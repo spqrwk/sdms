@@ -113,7 +113,7 @@ MAIN CONTENT LAYOUT
                                 <span class="font-size-xl text-primary-dark">SD</span><span class="font-size-xl">MS</span>
                             </a>
                             <h1 class="h3 font-w700 mt-30 mb-10">欢迎使用学生宿舍管理系统</h1>
-                            <h2 class="h5 font-w400 text-muted mb-0">请使用账号密码登录</h2>
+                            <h2 class="h5 font-w400 text-muted mb-0">请使用用户编号和密码登录</h2>
                         </div>
                         <!-- END Header -->
 

@@ -1,6 +1,7 @@
 package com.github.sdms.controller;
 
 import cn.hutool.core.convert.impl.DateConverter;
+import cn.hutool.crypto.Mode;
 import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.entity.User;
@@ -62,8 +63,9 @@ public class UserController {
             userService.insert(user);
             model.addAttribute("addResult", "添加成功！");
         } catch (Exception e) {
+            model.addAttribute("user", user);
             e.printStackTrace();
-            model.addAttribute("addResult", "添加用户失败！" + e.getMessage());
+            model.addAttribute("addResult", "添加用户失败");
         }
         return "useradd";
     }
@@ -72,7 +74,7 @@ public class UserController {
     @RequestMapping("del")
     public String del(Long id) throws Exception {
         userService.deleteById(id);
-        HashMap<String,Object> map = new HashMap<String, Object>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
 
         map.put("code", 0);
         return JSON.toJSONString(map);
@@ -87,9 +89,8 @@ public class UserController {
     }
 
     @RequestMapping("update")
-    public String update(Long id, HttpServletRequest request, Model model) {
+    public String update(User user, HttpServletRequest request, Model model) {
         try {
-            User user = userService.queryById(id);
             userService.update(user);
 
             return "redirect:/user/list";
@@ -97,6 +98,30 @@ public class UserController {
             e.printStackTrace();
             model.addAttribute("updateResult", "修改失败！" + e.getMessage());
             return "userupdate";
+        }
+    }
+
+    @RequestMapping("topwdupdate")
+    public String toPwdUpdate() {
+        return "pwdupdate";
+    }
+
+    @RequestMapping("pwdupdate")
+    public String pwdupdate(String password, String newpassword, Long id, Model model, HttpSession session) {
+        User user = userService.queryById(id);
+        try {
+            if (user.getPassword().equals(password)) {
+                user.setPassword(newpassword);
+            } else {
+                new Exception();
+            }
+            userService.update(user);
+            session.removeAttribute("loginUser");
+            return "redirect:/";
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("updateResult", "修改失败");
+            return "pwdupdate";
         }
     }
 }
