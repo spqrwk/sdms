@@ -30,5 +30,26 @@
 
     <!-- 配置静态资源放行 -->
     <mvc:resources mapping="/statics/**" location="/statics/"/>
+    <!-- 全局异常处理 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">redirect:/op_error_500.jsp</prop>
+                <prop key="com.github.sdms.util.NoPermissionException">redirect:/op_error_401.jsp</prop>
+            </props>
+        </property>
+    </bean>
 
+    <!-- 配置拦截器 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/main"/>
+            <mvc:mapping path="/stu/**"/>
+            <mvc:mapping path="/dorm/**"/>
+            <mvc:mapping path="/tch/**"/>
+            <mvc:mapping path="/clazz/**"/>
+            <mvc:mapping path="/user/**"/>
+            <bean class="com.github.sdms.controller.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
