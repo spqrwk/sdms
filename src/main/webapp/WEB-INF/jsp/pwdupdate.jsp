@@ -7,7 +7,7 @@
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/user/pwdupdate" method="post">
+                    <form action="${realPath}/user/pwdupdate" method="post" id="modifypwd">
                         <input type="hidden" name="id" value="${loginUser.id}">
                         <div class="form-group row">
                             <label class="col-12" for="oldpassword">旧密码</label>
@@ -17,21 +17,23 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12" for="example-password-input-new">新密码</label>
+                            <label class="col-12" for="newpwd">新密码</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control" id="example-password-input-new" name="newpassword" placeholder="请输入新密码...">
+                                <input type="password" class="form-control" id="newpwd" name="newpassword" placeholder="请输入新密码...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-12" for="example-password-input-re">确认密码</label>
+                            <label class="col-12" for="repwd">确认密码</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control" id="example-password-input-re" placeholder="请确认密码...">
+                                <input type="password" class="form-control" id="repwd" placeholder="请确认密码...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         ${updateResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" id="subbutton" class="btn btn-alt-primary">提交</button>
                             </div>
                         </div>
                     </form>
