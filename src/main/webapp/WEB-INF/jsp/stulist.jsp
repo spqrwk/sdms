@@ -13,11 +13,23 @@
                                 <input type="hidden" name="p" value="1"/>
                                 <label class="sr-only" for="example-if-email">Email</label>
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="aptName" placeholder="请输入公寓名称..." value="${aptName}">
-                                <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="tchName" placeholder="请输入班主任姓名..." value="${tchName}">
-                                <label class="sr-only" for="example-if-email">Email</label>
-                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="clazzCode" placeholder="请输入班级编号..." value="${clazzCode}">
+                                <label class="sr-only" for="tchName">Email</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="tchName" name="tchName" placeholder="请输入班主任姓名..." value="${tchName}">
+                                <label class="sr-only" for="clazzCode">Email</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clazzCode" name="clazzCode" placeholder="请输入班级编号..." value="${clazzCode}">
                                 <button type="submit" class="btn btn-alt-primary">查询</button>
+                                <div class="form-group row">
+                                    <%--<label class="col-12" for="example-daterange1">选择日期</label>--%>
+                                    <div class="col-lg-8">
+                                        <div class="input-daterange input-group" data-date-format="yyyy-mm-dd" data-week-start="1" data-autoclose="true" data-today-highlight="true">
+                                            <input type="text" class="form-control" id="example-daterange1" name="startDate" placeholder="起始日期" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" value="${startDate}">
+                                            <div class="input-group-prepend input-group-append">
+                                                <span class="input-group-text font-w600">至</span>
+                                            </div>
+                                            <input type="text" class="form-control" id="example-daterange2" name="endDate" placeholder="截止日期" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" value="${endDate}">
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -114,3 +126,5 @@
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
 <script type="text/javascript" src="${realPath}/statics/localjs/stulist.js"></script>
+<script src="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script>jQuery(function(){ Codebase.helpers(['datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider', 'tags-inputs']); });</script>

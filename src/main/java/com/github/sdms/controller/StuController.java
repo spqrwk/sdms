@@ -1,6 +1,7 @@
 package com.github.sdms.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.github.sdms.entity.DeadlineDate;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.service.StuService;
 import com.github.sdms.util.Page;
@@ -31,11 +32,12 @@ public class StuController {
     private StuService stuService;
 
     @RequestMapping("list")
-    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, Date startDate, Date endDate, String aptName, String tchName, String clazzCode, Model model) {
-        Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, startDate, endDate, aptName, tchName, clazzCode);
+    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String clazzCode, Model model) {
+        System.out.println(deadlineDate);
+        Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, tchName, clazzCode);
         model.addAttribute("pageBean", pageBean);
-        model.addAttribute("startDate", startDate);
-        model.addAttribute("endDate", endDate);
+        model.addAttribute("startDate", deadlineDate.getStartDate());
+        model.addAttribute("endDate", deadlineDate.getEndDate());
         model.addAttribute("aptName",aptName);
         model.addAttribute("tchName",tchName);
         model.addAttribute("clazzCode",clazzCode);
@@ -59,8 +61,6 @@ public class StuController {
     @RequestMapping("addnew")
     public String add(Stu stu, Model model) {
         try {
-            System.out.println(stu);
-            System.out.println(stu);
             stuService.insert(stu);
             model.addAttribute("addResult", "添加成功！");
         } catch (Exception e) {
