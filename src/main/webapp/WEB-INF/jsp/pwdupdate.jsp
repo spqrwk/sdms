@@ -31,15 +31,20 @@
                             </div>
                         </div>
                         ${updateResult}
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <button type="button" id="subbutton" class="btn btn-alt-primary">提交</button>
+                        <div align="center">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-alt-primary">提交<button>
+                                        <button type="button" class="btn btn-alt-secondary" data-wizard="prev" onclick="javascript:history.back(-1);">
+                                            <i class="fa fa-angle-left mr-5"></i> 返回
+                                            <button>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-        <!-- END Page Content -->
+<!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
 <script type="text/javascript" src="${realPath}/statics/localjs/pwdupdate.js"></script>
