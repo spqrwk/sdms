@@ -7,17 +7,19 @@
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/dorm/addnew" method="post">
-                        <div class="form-group row">
-                            <label class="col-12">宿舍编号</label>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" name="code" placeholder="请输入宿舍编号...">
-                            </div>
-                        </div>
+                    <form action="${realPath}/dorm/addnew" method="post" id="dormadd">
                         <div class="form-group row">
                             <label class="col-12">公寓名称</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="aptName" placeholder="请输入公寓名称...">
+                                <input type="text" class="form-control" name="aptName" id="aptName" placeholder="请输入公寓名称...">
+                                <font color="red"></font>
+                            </div>
+                        </div>
+                        <div class="form-group row" id="aptNameBlock">
+                            <label class="col-12">宿舍编号</label>
+                            <div class="col-md-9">
+                                <input type="text" class="form-control" name="code" id="code" placeholder="请输入宿舍编号...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -32,9 +34,10 @@
                                 <input type="text" class="form-control" name="tenantLimit" placeholder="请输入最大居住人数...">
                             </div>
                         </div>
+                        ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" class="btn btn-alt-primary" id="submitBtn">提交</button>
                             </div>
                         </div>
                     </form>
@@ -43,3 +46,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/dormadd.js"></script>

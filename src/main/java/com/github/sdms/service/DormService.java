@@ -2,6 +2,7 @@ package com.github.sdms.service;
 
 import com.github.sdms.entity.Dorm;
 import com.github.sdms.util.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -54,4 +55,6 @@ public interface DormService {
     List<Dorm> queryAllAptName();
 
     List<Dorm> queryAllByAptName(String aptName);
+
+    boolean countByANADC(String aptName, String dormCode);
 }
