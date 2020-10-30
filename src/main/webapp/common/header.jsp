@@ -34,6 +34,7 @@
 
     <!-- Fonts and Codebase framework -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
+    <link rel="stylesheet" href="${realPath}/statics/assets/js/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" id="css-main" href="${realPath}/statics/assets/css/codebase.min.css">
 
     <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
