@@ -283,6 +283,12 @@ MAIN CONTENT LAYOUT
         <div class="content-header">
             <!-- Left Section -->
             <div class="content-header-section">
+                <!-- Toggle Sidebar -->
+                <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
+                <button type="button" class="btn btn-circle btn-dual-secondary" data-toggle="layout" data-action="sidebar_toggle">
+                    <i class="fa fa-navicon"></i>
+                </button>
+                <!-- END Toggle Sidebar -->
 
                 <!-- Layout Options (used just for demonstration) -->
                 <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
