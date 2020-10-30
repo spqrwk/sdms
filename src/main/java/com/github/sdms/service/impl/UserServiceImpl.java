@@ -28,6 +28,11 @@ public class UserServiceImpl implements UserService {
         return userDao.queryByCode(code);
     }
 
+    @Override
+    public boolean checkUserCode(String userCode) {
+        return userDao.queryByCode(userCode) == null;
+    }
+
     /**
      * 通过ID查询单条数据
      *
@@ -93,5 +98,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean deleteById(Long id) {
         return this.userDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public boolean checkPwd(String oldPassword, String userCode) {
+        // 验证原密码是否正确
+        User user = userDao.queryByCode(userCode);
+        if (!user.getPassword().equals(oldPassword)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

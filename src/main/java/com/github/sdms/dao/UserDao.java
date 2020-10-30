@@ -16,11 +16,10 @@ import java.util.Map;
 public interface UserDao {
 
     /**
-     * 根据用户名查询单条数据
+     * 根据用户编码查询单条数据
      * @param userCode
      * @return 实例对象
      */
-
     User queryByCode(@Param("userCode") String userCode);
 
     /**

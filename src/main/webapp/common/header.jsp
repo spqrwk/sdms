@@ -262,7 +262,9 @@ MAIN CONTENT LAYOUT
                             <li>
                                 <a href="${realPath}/user/add">添加用户</a>
                             </li>
-
+                            <li>
+                                <a href="${realPath}/user/topwdupdate">修改密码</a>
+                            </li>
                         </ul>
                     </li>
 

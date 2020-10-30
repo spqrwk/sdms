@@ -15,6 +15,7 @@ $(function () {
                         options += "<option value=\"" + data[i].id + "\">" + data[i].code + "</option>";
                     }
                     $("#clazzCode").html(options);
+                    $("#clazzCode").attr("isallowsub", "true");
                 } else {
                     $("#clazzCode").next().html(" 空数据");
                 }
@@ -39,6 +40,7 @@ $(function () {
                         options += "<option value=\"" + data[i].aptName + "\">" + data[i].aptName + "</option>";
                     }
                     $("#aptName").html(options);
+                    $("#aptName").attr("isallowsub", "true");
                 } else {
                     $("#aptName").next().html(" 空数据");
                 }
@@ -67,6 +69,7 @@ $('#aptName').blur(function (){
                         options += "<option value=\"" + data[i].id + "\">" + data[i].code + "</option>";
                     }
                     $("#dormCode").html(options);
+                    $("#dormCode").attr("isallowsub", "true");
                 } else {
                     $("#dormCode").next().html(" 空数据");
                 }

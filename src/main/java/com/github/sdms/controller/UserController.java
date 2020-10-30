@@ -124,4 +124,27 @@ public class UserController {
             return "pwdupdate";
         }
     }
+
+    @ResponseBody
+    @RequestMapping("checkusercode")
+    public String checkUserCode(@RequestParam String userCode) {
+        boolean flag = userService.checkUserCode(userCode);
+        System.out.println(flag);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("code", flag ? 0 : 1);
+        return JSON.toJSONString(map);
+    }
+
+    @ResponseBody
+    @RequestMapping("/checkpwd")
+    public String checkPwd(@RequestParam String oldpassword, HttpSession session) throws Exception {
+        User loginUser = (User)session.getAttribute("loginUser");
+
+        boolean flag = userService.checkPwd(oldpassword, loginUser.getUserCode());
+        HashMap<String,Object> map = new HashMap<String, Object>();
+
+        map.put("code", flag ? "0" : "1");
+
+        return JSON.toJSONString(map);
+    }
 }

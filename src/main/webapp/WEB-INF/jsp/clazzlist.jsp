@@ -47,7 +47,7 @@
 
                                                 </button>
                                             </a>
-                                            <a href="${realPath}/">
+                                            <a class="delClazz" href="javascript:;" clazzid="${clazz.id}" clazzcode="${clazz.code}">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="删除">
                                                     <i class="fa fa-times"></i>
                                                 </button>
@@ -92,3 +92,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/clazzlist.js"></script>

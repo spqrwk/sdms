@@ -42,7 +42,7 @@
                                                                         </td>--%>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <a href="${realPath}/">
+                                            <a class="delTch" href="javascript:;" tchid="${tch.id}" tchname="${tch.name}">
                                                 <button type="button" class="btn btn-sm btn-secondary" data-toggle="tooltip" title="删除">
                                                     <i class="fa fa-times"></i>
                                                 </button>
@@ -108,3 +108,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/tchlist.js"></script>

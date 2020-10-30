@@ -7,11 +7,12 @@
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/user/addnew" method="post">
+                    <form action="${realPath}/user/addnew" method="post" id="userAddForm">
                         <div class="form-group row">
-                            <label class="col-12" for="example-text-input">用户编号</label>
+                            <label class="col-12" for="userCode">用户编号</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" id="example-text-input" name="userCode" placeholder="请输入用户编号..." value="${user.userCode}">
+                                <input type="text" class="form-control" id="userCode" name="userCode" placeholder="请输入用户编号..." value="${user.userCode}">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -35,7 +36,7 @@
                         ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" class="btn btn-alt-primary" id="submitBtn">提交</button>
                             </div>
                         </div>
                     </form>
@@ -44,3 +45,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/useradd.js"></script>

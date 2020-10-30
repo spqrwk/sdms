@@ -1,8 +1,4 @@
-
 $(function () {
-
-
-
     $.ajax({
         type: "GET",
         url: path + "/tch/queryalltch",
@@ -20,7 +16,6 @@ $(function () {
                 } else {
                     $("#tchId").next().html(" 空数据");
                 }
-
             }
         }, error: function (result) {
             $("#tchId").next().html(" 获取用户角色列表error");

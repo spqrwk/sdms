@@ -7,7 +7,7 @@
         <div class="content">
             <div class="pt-50 pb-20">
                 <div class="block-content">
-                    <form action="${realPath}/stu/addnew" method="post">
+                    <form action="${realPath}/stu/addnew" method="post" id="stuAddForm">
                         <div class="form-group row">
                             <label class="col-12">学生姓名</label>
                             <div class="col-md-9">
@@ -63,7 +63,7 @@
                         ${addResult}
                         <div class="form-group row">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                                <button type="button" class="btn btn-alt-primary" id="submitBtn">提交</button>
                             </div>
                         </div>
                     </form>

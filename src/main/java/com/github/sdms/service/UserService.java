@@ -16,6 +16,7 @@ public interface UserService {
 
    User queryByCode(String code);
 
+   boolean checkUserCode(String userCode);
 
     /**
      * 通过ID查询单条数据
@@ -55,5 +56,5 @@ public interface UserService {
      * @return 是否成功
      */
     boolean deleteById(Long id);
-
+    boolean checkPwd(String oldPassword, String userCode);
 }

@@ -10,9 +10,10 @@
                     <form action="${realPath}/user/pwdupdate" method="post">
                         <input type="hidden" name="id" value="${loginUser.id}">
                         <div class="form-group row">
-                            <label class="col-12" for="example-password-input">旧密码</label>
+                            <label class="col-12" for="oldpassword">旧密码</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control" id="example-password-input" name="password" placeholder="请输入旧密码...">
+                                <input type="password" class="form-control" id="oldpassword" name="password" placeholder="请输入旧密码...">
+                                <font color="red"></font>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -39,3 +40,4 @@
         </div>
         <!-- END Page Content -->
 <%@include file="../../common/footer.jsp"%>
+<script type="text/javascript" src="${realPath}/statics/localjs/pwdupdate.js"></script>
