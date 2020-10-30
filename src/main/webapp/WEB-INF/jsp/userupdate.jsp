@@ -22,9 +22,14 @@
                             </div>
                         </div>
                         ${updateResult}
-                        <div class="form-group row">
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-alt-primary">提交</button>
+                        <div align="center">
+                            <div class="form-group row">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-alt-primary">提交</button>
+                                    <button type="button" class="btn btn-alt-secondary" data-wizard="prev" onclick="javascript:history.back(-1);">
+                                        <i class="fa fa-angle-left mr-5"></i> 返回
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>

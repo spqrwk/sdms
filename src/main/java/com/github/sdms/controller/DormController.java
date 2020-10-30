@@ -122,4 +122,12 @@ public class DormController {
 
         return JSON.toJSONString(map);
     }
+
+    @ResponseBody
+    @RequestMapping("countbyanadc")
+    public String countByANADC(@RequestParam String aptName, @RequestParam String code) {
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("code", dormService.countByANADC(aptName, code) ? 0 : 1);
+        return JSON.toJSONString(map);
+    }
 }

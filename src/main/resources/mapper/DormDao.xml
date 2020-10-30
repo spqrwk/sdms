@@ -40,7 +40,7 @@
         </if>
     </select>
 
-    <select id="countByLimit" resultType="java.lang.Integer">
+    <select id="countByLimit" resultType="INTEGER">
         SELECT
             count(1)
         FROM
@@ -69,6 +69,17 @@
             sdms_dorm sd
         WHERE
             sd.apt_name LIKE CONCAT('%', #{aptName}, '%')
+    </select>
+
+    <select id="countByANADC" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_dorm
+        WHERE
+            apt_name = #{aptName}
+            AND
+            code = #{code}
     </select>
 
     <!--新增所有列-->
