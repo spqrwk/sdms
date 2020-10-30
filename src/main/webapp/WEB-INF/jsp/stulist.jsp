@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../../common/header.jsp"%>
         <!-- Page Content -->
         <div class="content">
@@ -66,8 +67,8 @@
                                     <td class="font-w600">${stu.clazzCode}</td>
                                     <td class="font-w600">${stu.tchName}</td>
                                     <td class="font-w600">${stu.remarks}</td>
-                                    <td class="font-w600">${stu.checkInDate}</td>
-                                    <td class="font-w600">${stu.paymentDeadline}</td>
+                                    <td class="font-w600"><fmt:formatDate value="${stu.checkInDate}" pattern="yyyy-MM-dd"/></td>                                    </td>
+                                    <td class="font-w600"><fmt:formatDate value="${stu.paymentDeadline}" pattern="yyyy-MM-dd"/></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a href="${realPath}/stu/view?id=${stu.id}">

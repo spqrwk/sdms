@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="../../common/header.jsp"%>
 
         <!-- Page Content -->
@@ -35,7 +36,7 @@
                         <div class="form-group row">
                             <div class="col-lg-8">
                                 <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择入住时间"  value="${stu.checkInDate}">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6" name="checkInDate" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择入住时间"  value="<fmt:formatDate value="${stu.checkInDate}" pattern="yyyy-MM-dd"/>">
                                     <label for="example-datepicker6">入住时间</label>
                                 </div>
                             </div>
@@ -43,7 +44,7 @@
                         <div class="form-group row">
                             <div class="col-lg-8">
                                 <div class="form-material">
-                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择缴费截止日期"  value="${stu.paymentDeadline}">
+                                    <input type="text" class="js-datepicker form-control" id="example-datepicker6-1" name="paymentDeadline" data-week-start="1" data-autoclose="true" data-today-highlight="true" data-date-format="yyyy-mm-dd" placeholder="请选择缴费截止日期"  value="<fmt:formatDate value="${stu.paymentDeadline}" pattern="yyyy-MM-dd"/>">
                                     <label for="example-datepicker6-1">缴费截止日期</label>
                                 </div>
                             </div>
