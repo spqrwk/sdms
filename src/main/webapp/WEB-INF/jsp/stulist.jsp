@@ -18,7 +18,6 @@
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="tchName" name="tchName" placeholder="请输入班主任姓名..." value="${tchName}">
                                 <label class="sr-only" for="clazzCode">Email</label>
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="clazzCode" name="clazzCode" placeholder="请输入班级编号..." value="${clazzCode}">
-                                <button type="submit" class="btn btn-alt-primary">查询</button>
                                 <div class="form-group row">
                                     <%--<label class="col-12" for="example-daterange1">选择日期</label>--%>
                                     <div class="col-lg-8">
@@ -31,6 +30,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                <button type="submit" class="btn btn-alt-primary">查询</button>
                             </form>
                         </div>
                     </div>
@@ -122,6 +122,14 @@
                     </div>
                 </div>
                 <!-- END Dynamic Table Full -->
+                <div align="center">
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-alt-primary">导出当前页</button>
+                            <button type="submit" class="btn btn-alt-primary">导出全部</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- END Page Content -->

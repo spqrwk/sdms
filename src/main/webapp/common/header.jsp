@@ -219,6 +219,9 @@ MAIN CONTENT LAYOUT
                             <li>
                                 <a href="${realPath}/stu/add">添加学生</a>
                             </li>
+                            <li>
+                                <a href="${realPath}/stu/fileupload">导入学生Excel表</a>
+                            </li>
                         </ul>
                     </li>
                     <li>
