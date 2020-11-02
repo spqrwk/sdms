@@ -116,8 +116,7 @@ public class StuController {
             String excelUploadPath = null;
             if (!excelUpload.isEmpty()) {
                 String originalFilename = excelUpload.getOriginalFilename();
-                String newFileName = System.currentTimeMillis() + "_excel_" + originalFilename;
-                File file = new File(Constants.LINUX_ROOT_DIR, newFileName);
+                File file = new File(Constants.LINUX_ROOT_DIR, originalFilename);
                 excelUpload.transferTo(file);
                 excelUploadPath = file.getPath();
             }
