@@ -29,7 +29,7 @@
                                 <th class="d-none d-sm-table-cell" class="text-center">公寓名称</th>
                                 <th class="d-none d-sm-table-cell" class="text-center">每月租金</th>
                                 <th class="d-none d-sm-table-cell" class="text-center">最大可住人数</th>
-                                <th class="d-none d-sm-table-cell" class="text-center">已住人数</th>
+                                <th class="d-none d-sm-table-cell" class="text-center">剩余空床</th>
                                 <th class="text-center" style="width: 15%;">操作</th>
                             </tr>
                             </thead>
@@ -41,7 +41,7 @@
                                     <td class="font-w600">${dorm.aptName}</td>
                                     <td class="font-w600">${dorm.monthlyRent}</td>
                                     <td class="font-w600">${dorm.tenantLimit}</td>
-                                    <td class="font-w600">${dorm.currentTenant}</td>
+                                    <td class="font-w600">${dorm.tenantLimit-dorm.currentTenant}</td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <a href="${realPath}/dorm/view?id=${dorm.id}">
