@@ -16,7 +16,7 @@ import java.util.List;
 public class FileInput {
 
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         try {
             InputStream is = new FileInputStream("D:/students.xls");
@@ -29,10 +29,10 @@ public class FileInput {
         }
 
 
-    }
+    }*/
 
 
-    public static List<Stu> getStuList(InputStream is) {
+    public List<Stu> getStuList(InputStream is) {
         List<Stu> stuList = new ArrayList<>();
         HSSFWorkbook workbook = null;
         try {
