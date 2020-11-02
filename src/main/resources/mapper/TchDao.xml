@@ -52,9 +52,6 @@
                 AND st.name LIKE CONCAT('%',#{tchName},'%')
             </if>
         </where>
-        <if test="startIndex != null and pageSize != null">
-            LIMIT #{startIndex}, #{pageSize}
-        </if>
     </select>
 
     <!--新增所有列-->

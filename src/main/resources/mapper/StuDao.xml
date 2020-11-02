@@ -43,6 +43,9 @@
             <if test="aptName != null and aptName != ''">
                 AND sd.apt_name LIKE CONCAT('%', #{aptName} ,'%')
             </if>
+            <if test="dormCode != null and dormCode != ''">
+                AND sd.code LIKE CONCAT('%', #{dormCode}, '%')
+            </if>
             <if test="tchName != null and tchName !=''">
                 AND st.name LIKE CONCAT('%', #{tchName} ,'%')
             </if>
@@ -79,6 +82,9 @@
             </if>
             <if test="aptName != null and aptName != ''">
                 AND sd.apt_name LIKE CONCAT('%', #{aptName} ,'%')
+            </if>
+            <if test="dormCode != null and dormCode != ''">
+                AND sd.code LIKE CONCAT('%', #{dormCode}, '%')
             </if>
             <if test="tchName != null and tchName !=''">
                 AND st.name LIKE CONCAT('%', #{tchName} ,'%')

@@ -14,6 +14,9 @@
                                 <input type="hidden" name="p" value="1"/>
                                 <label class="sr-only" for="example-if-email">Email</label>
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="example-if-email" name="aptName" placeholder="请输入公寓名称..." value="${aptName}">
+                                <label class="sr-only">Email</label>
+                                <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="dormCode" placeholder="请输入宿舍编码..." value="${dormCode}">
+
                                 <label class="sr-only" for="tchName">Email</label>
                                 <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="tchName" name="tchName" placeholder="请输入班主任姓名..." value="${tchName}">
                                 <label class="sr-only" for="clazzCode">Email</label>

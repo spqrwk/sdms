@@ -54,13 +54,14 @@ public class StuServiceImpl implements StuService {
      * @return 对象列表
      */
     @Override
-    public Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String tchName, String clazzCode){
+    public Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String dormCode, String tchName, String clazzCode){
         Page<Stu> pageBean = new Page<>(currentPage);
 
         HashMap<String, Object> params = new HashMap<>();
         params.put("startDate", startDate);
         params.put("endDate", endDate);
         params.put("aptName", aptName);
+        params.put("dormCode", dormCode);
         params.put("tchName", tchName);
         params.put("clazzCode", clazzCode);
 

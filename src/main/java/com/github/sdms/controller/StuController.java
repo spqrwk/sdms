@@ -43,13 +43,14 @@ public class StuController {
     private DormService dormService;
 
     @RequestMapping("list")
-    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String clazzCode, Model model) {
+    public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String dormCode, String clazzCode, Model model) {
         System.out.println(deadlineDate);
-        Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, tchName, clazzCode);
+        Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, dormCode, tchName, clazzCode);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("startDate", deadlineDate.getStartDate());
         model.addAttribute("endDate", deadlineDate.getEndDate());
         model.addAttribute("aptName",aptName);
+        model.addAttribute("dormCode", dormCode);
         model.addAttribute("tchName",tchName);
         model.addAttribute("clazzCode",clazzCode);
         return "stulist";

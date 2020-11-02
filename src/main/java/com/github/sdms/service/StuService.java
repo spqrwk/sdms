@@ -31,7 +31,7 @@ public interface StuService {
      *
      * @return 对象列表
      */
-    Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String tchName, String clazzCode);
+    Page<Stu> queryAllByLimit(Integer currentPage, Date startDate, Date endDate, String aptName, String dormCode, String tchName, String clazzCode);
 
     /**
      * 新增数据
