@@ -4,14 +4,18 @@ import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.DeadlineDate;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.service.StuService;
+import com.github.sdms.util.Constants;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -99,5 +103,29 @@ public class StuController {
             model.addAttribute("updateResult", "修改失败！" + e.getMessage());
             return "stuupdate";
         }
+    }
+
+    @RequestMapping("tofileupload")
+    public String toFileUpload() {
+        return "fileuploadlist";
+    }
+
+    @RequestMapping("fileupload")
+    public String fileupload(MultipartFile excelUpload, Stu stu, HttpSession session, Model model) {
+        try {
+            String excelUploadPath = null;
+            if (!excelUpload.isEmpty()) {
+                String originalFilename = excelUpload.getOriginalFilename();
+                String newFileName = System.currentTimeMillis() + "_excel_" + originalFilename;
+                File file = new File(Constants.LINUX_ROOT_DIR, newFileName);
+                excelUpload.transferTo(file);
+                excelUploadPath = file.getPath();
+            }
+            model.addAttribute("uploadResult", "上传成功");
+        } catch (Exception e) {
+            model.addAttribute("uploadResult", "上传失败");
+
+        }
+        return "fileupload";
     }
 }

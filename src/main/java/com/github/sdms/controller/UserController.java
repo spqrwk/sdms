@@ -3,18 +3,23 @@ package com.github.sdms.controller;
 import cn.hutool.core.convert.impl.DateConverter;
 import cn.hutool.crypto.Mode;
 import com.alibaba.fastjson.JSON;
+import com.github.sdms.entity.Stu;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.entity.User;
 import com.github.sdms.service.UserService;
+import com.github.sdms.util.Constants;
+import com.github.sdms.util.FileUtil;
 import com.github.sdms.util.Page;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.util.HashMap;
 
 
@@ -147,4 +152,5 @@ public class UserController {
 
         return JSON.toJSONString(map);
     }
+
 }
