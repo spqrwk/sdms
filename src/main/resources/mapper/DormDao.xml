@@ -53,9 +53,6 @@
                 AND sd.apt_name LIKE CONCAT('%', #{aptName}, '%')
             </if>
         </where>
-        <if test="startIndex != null and pageSize != null">
-            LIMIT #{startIndex}, #{pageSize}
-        </if>
     </select>
 
     <select id="queryAllAptName" resultMap="DormMap">
@@ -74,6 +71,17 @@
     <select id="countByANADC" resultType="java.lang.Integer">
         SELECT
             count(1)
+        FROM
+            sdms_dorm
+        WHERE
+            apt_name = #{aptName}
+            AND
+            code = #{code}
+    </select>
+
+    <select id="queryDormId" resultType="java.lang.Long">
+        SELECT
+            id
         FROM
             sdms_dorm
         WHERE

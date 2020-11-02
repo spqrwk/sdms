@@ -2,6 +2,7 @@ package com.github.sdms.service;
 
 import com.github.sdms.entity.Stu;
 import com.github.sdms.util.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.Date;
 import java.util.List;
@@ -56,4 +57,7 @@ public interface StuService {
      */
     boolean deleteById(Long id);
 
+    void insertForEach(List<Stu> stuList);
+
+    public void insertStu(Stu stu);
 }

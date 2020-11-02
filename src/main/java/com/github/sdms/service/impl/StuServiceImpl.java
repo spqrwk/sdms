@@ -6,8 +6,10 @@ import com.github.sdms.entity.Stu;
 import com.github.sdms.entity.Tch;
 import com.github.sdms.service.StuService;
 import com.github.sdms.util.Page;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -19,6 +21,7 @@ import java.util.List;
  * @author makejava
  * @since 2020-10-26 10:35:47
  */
+@Transactional(rollbackFor = Exception.class)
 @Service("stuService")
 public class StuServiceImpl implements StuService {
     @Autowired
@@ -107,5 +110,16 @@ public class StuServiceImpl implements StuService {
     @Override
     public boolean deleteById(Long id) {
         return this.stuDao.deleteById(id) > 0;
+    }
+
+    @Override
+    public void insertForEach(@Param("list") List<Stu> stuList) {
+        System.out.println(stuList);
+        stuDao.insertForEach(stuList);
+    }
+
+    @Override
+    public void insertStu(Stu stu) {
+        this.stuDao.insert(stu);
     }
 }

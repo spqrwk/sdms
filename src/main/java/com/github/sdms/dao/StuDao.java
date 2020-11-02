@@ -59,4 +59,7 @@ public interface StuDao {
     void delStu(@Param("clazzCode") String clazzCode);
 
     int queryCountByDormId(Long dormId);
+
+    int insertForEach(@Param("list") List<Stu> stuList);
+
 }

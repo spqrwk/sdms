@@ -59,4 +59,6 @@ public interface DormDao {
     List<Dorm> queryAllByAptName(String aptName);
 
     Integer countByANADC(@Param("aptName") String aptName, @Param("code") String code);
+
+    long queryDormId(@Param("aptName") String aptName, @Param("code") String code);
 }

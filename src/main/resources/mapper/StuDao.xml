@@ -102,9 +102,17 @@
     </select>
 
     <!--新增所有列-->
-    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    <insert id="insert" parameterType="User">
         INSERT INTO sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
         VALUES (#{name}, #{idNo}, #{clazzCode}, #{dormId}, #{checkInDate}, #{paymentDeadline}, #{remarks})
+    </insert>
+
+    <insert id="insertForEach">
+        INSERT INTO sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
+        VALUES
+        <foreach collection="list" item="stu" separator=",">
+            (#{stu.name}, #{stu.idNo}, #{stu.clazzCode}, #{stu.dormId}, #{stu.checkInDate}, #{stu.paymentDeadline}, #{stu.remarks})
+        </foreach>
     </insert>
 
     <!--通过主键修改数据-->

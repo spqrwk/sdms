@@ -3,6 +3,7 @@ package com.github.sdms.controller;
 import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.DeadlineDate;
 import com.github.sdms.entity.Stu;
+import com.github.sdms.service.DormService;
 import com.github.sdms.service.StuService;
 import com.github.sdms.util.Constants;
 import com.github.sdms.util.FileInput;
@@ -20,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -36,6 +38,9 @@ public class StuController {
      */
     @Autowired
     private StuService stuService;
+
+    @Autowired
+    private DormService dormService;
 
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String clazzCode, Model model) {
@@ -113,7 +118,7 @@ public class StuController {
     }
 
     @RequestMapping("fileupload")
-    public String fileUpload(MultipartFile excelUpload, Stu stu, HttpSession session, Model model) {
+    public String fileUpload(MultipartFile excelUpload, HttpSession session, Model model) {
         try {
             String excelUploadPath = null;
             if (!excelUpload.isEmpty()) {
@@ -122,8 +127,13 @@ public class StuController {
                 excelUpload.transferTo(file);
                 excelUploadPath = file.getPath();
                 FileInput fileInput = new FileInput();
-
-                System.out.println(fileInput.getStuList(new FileInputStream(excelUploadPath)));
+                for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
+                    System.out.println(stuObj);
+                    // stuObj.setDormId((long) 1);
+                    stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
+                    stuService.insertStu(stuObj);
+                }
+                // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
             }
             model.addAttribute("uploadResult", "上传成功");
         } catch (Exception e) {

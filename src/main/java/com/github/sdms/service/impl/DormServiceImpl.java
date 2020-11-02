@@ -111,4 +111,9 @@ public class DormServiceImpl implements DormService {
     public boolean countByANADC(String aptName, String dormCode) {
         return dormDao.countByANADC(aptName, dormCode) == 0 ? true : false;
     }
+
+    @Override
+    public long queryDormId(String aptName, String code) {
+        return dormDao.queryDormId(aptName, code);
+    }
 }

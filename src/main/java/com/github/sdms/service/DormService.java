@@ -57,4 +57,6 @@ public interface DormService {
     List<Dorm> queryAllByAptName(String aptName);
 
     boolean countByANADC(String aptName, String dormCode);
+
+    long queryDormId(String aptName, String code);
 }
