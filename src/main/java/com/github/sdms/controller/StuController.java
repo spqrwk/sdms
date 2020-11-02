@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.sdms.entity.DeadlineDate;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.service.StuService;
+import com.github.sdms.util.FileOutput;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -33,7 +34,7 @@ public class StuController {
 
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String clazzCode, Model model) {
-        System.out.println(deadlineDate);
+        FileOutput fo = new FileOutput();
         Page<Stu> pageBean = stuService.queryAllByLimit(currentPage, deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, tchName, clazzCode);
         model.addAttribute("pageBean", pageBean);
         model.addAttribute("startDate", deadlineDate.getStartDate());
@@ -41,6 +42,7 @@ public class StuController {
         model.addAttribute("aptName",aptName);
         model.addAttribute("tchName",tchName);
         model.addAttribute("clazzCode",clazzCode);
+        fo.createExcel(pageBean.getRows());
         return "stulist";
     }
 
