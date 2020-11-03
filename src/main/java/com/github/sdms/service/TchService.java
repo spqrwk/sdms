@@ -54,4 +54,5 @@ public interface TchService {
      */
     void deleteById(Long id);
 
+    Tch exactQueryTch(String tchName);
 }

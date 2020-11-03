@@ -15,7 +15,7 @@ import java.util.List;
 public class FileOutput {
 
 
-    public  void createExcel(List<Stu> stuList){
+    public void createExcel(List<Stu> stuList){
         System.out.println("fileoutput调用啦");
         HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
         HSSFSheet hssfSheet=hssfWorkbook.createSheet("学生信息表");

@@ -7,6 +7,7 @@ import com.github.sdms.service.DormService;
 import com.github.sdms.service.StuService;
 import com.github.sdms.util.Constants;
 import com.github.sdms.util.FileInput;
+import com.github.sdms.util.FileOutput;
 import com.github.sdms.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -19,9 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.util.*;
 
 
 /**
@@ -142,5 +143,17 @@ public class StuController {
 
         }
         return "fileuploadlist";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("allfileexportbylimit")
+    public String allFileExportByLimit(DeadlineDate deadlineDate, String aptName, String dormCode, String tchName, String clazzCode) {
+        FileOutput fileOutput = new FileOutput();
+        fileOutput.createExcel(stuService.exportAllByLimit(deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, dormCode, tchName, clazzCode));
+        System.out.println("公寓"+aptName+"宿舍"+dormCode+"老师"+tchName+"班级"+clazzCode);
+        Map<String,String> map=new HashMap<>();
+        map.put("code","0");
+        return JSON.toJSONString(map);
     }
 }

@@ -62,4 +62,6 @@ public interface TchDao {
      */
     int deleteById(Long id);
 
+    Tch exactQueryTch(@Param("tchName") String tchName);
+
 }

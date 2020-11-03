@@ -54,6 +54,15 @@
         </where>
     </select>
 
+    <select id="exactQueryTch" resultType="com.github.sdms.entity.Tch">
+        SELECT
+            *
+        FROM
+            sdms_tch
+        WHERE
+            name = #{tchName}
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
         INSERT INTO

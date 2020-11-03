@@ -95,4 +95,9 @@ public class TchServiceImpl implements TchService {
     public void deleteById(Long id) {
         tchDao.deleteById(id);
     }
+
+    @Override
+    public Tch exactQueryTch(String tchName) {
+        return tchDao.exactQueryTch(tchName);
+    }
 }

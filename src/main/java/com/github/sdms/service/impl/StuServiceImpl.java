@@ -123,4 +123,27 @@ public class StuServiceImpl implements StuService {
     public void insertStu(Stu stu) {
         this.stuDao.insert(stu);
     }
+
+    @Override
+    public List<Stu> exportAll() {
+        List<Stu> stuList = stuDao.queryAllByLimit(null);
+        for (Stu stu : stuList
+             ) {
+            System.out.println(stu);
+        }
+        return stuList;
+    }
+
+    @Override
+    public List<Stu> exportAllByLimit(Date startDate, Date endDate, String aptName, String dormCode, String tchName, String clazzCode) {
+        HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("startDate", startDate);
+        hashMap.put("endDate", endDate);
+        hashMap.put("aptName", aptName);
+        hashMap.put("dormCode", dormCode);
+        hashMap.put("tchName", tchName);
+        hashMap.put("clazzCode", clazzCode);
+        List<Stu> stuList = stuDao.queryAllByLimit(hashMap);
+        return stuList;
+    }
 }

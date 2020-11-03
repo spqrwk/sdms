@@ -26,3 +26,51 @@ $(function () {
         })
     }
 });
+
+$("#exportBtn").click(
+    function () {
+        $.ajax({
+            type:"GET",
+            url:path+"/stu/allfileexportbylimit",
+            data:{
+                "startDate":$('#startDate').val(),
+                "endDate":$('#endDate').val(),
+                "aptName":$('#aptName').val(),
+                "dormCode":$('#dormCode').val(),
+                "tchName":$('#tchName').val(),
+                "clazzCode":$('#clazzCode').val(),
+            },
+            dataType: 'JSON',
+            success:function(result){
+                if (result.code == '0'){
+                    alert('导出成功');
+                }else{
+                    alert('导出失败');
+                }
+            },
+            error:function(result){
+                alert('服务器繁忙')
+            }
+        })
+    }
+)
+
+$("#exportAllBtn").click(
+    function () {
+        $.ajax({
+            type:"GET",
+            url:path+"/stu/allfileexportbylimit",
+            dataType: 'JSON',
+            success:function(result){
+                if (result.code == '0'){
+                    alert('导出成功');
+                }else{
+                    alert('导出失败');
+                }
+            },
+            error:function(result){
+                alert('服务器繁忙')
+            }
+        })
+    }
+)

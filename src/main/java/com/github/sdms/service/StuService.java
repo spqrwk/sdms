@@ -60,4 +60,8 @@ public interface StuService {
     void insertForEach(List<Stu> stuList);
 
     public void insertStu(Stu stu);
+
+    List<Stu> exportAll();
+
+    List<Stu> exportAllByLimit(Date startDate, Date endDate, String aptName, String dormCode, String tchName, String clazzCode);
 }
