@@ -65,4 +65,12 @@ public class Clazz implements Serializable {
     public void setTchName(String tchName) {
         this.tchName = tchName;
     }
+
+    public Clazz(String code, Long tchId) {
+        this.code = code;
+        this.tchId = tchId;
+    }
+
+    public Clazz() {
+    }
 }

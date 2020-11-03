@@ -75,16 +75,36 @@ public class FileInput {
                 if (hssfCell == null) {
                     continue;
                 }
-                stu.setAptName(hssfCell.getStringCellValue());
+                stu.setTchName(hssfCell.getStringCellValue());
+
 
                 hssfCell = hssfRow.getCell(4);
+                if (hssfCell == null) {
+                    continue;
+                }
+                stu.setAptName(hssfCell.getStringCellValue());
+
+                hssfCell = hssfRow.getCell(5);
                 if (hssfCell == null) {
                     continue;
                 }
                 hssfCell.setCellType(CellType.STRING);
                 stu.setDormCode(hssfCell.getStringCellValue());
 
-                hssfCell = hssfRow.getCell(5);
+                hssfCell = hssfRow.getCell(6);
+                if (hssfCell == null) {
+                    continue;
+                }
+                stu.setMonthlyRent(hssfCell.getStringCellValue());
+
+                hssfCell = hssfRow.getCell(7);
+                if (hssfCell == null) {
+                    continue;
+                }
+                stu.setTenantLimit(hssfCell.getStringCellValue());
+
+
+                hssfCell = hssfRow.getCell(8);
                 if (hssfCell == null) {
                     continue;
                 }
@@ -92,13 +112,13 @@ public class FileInput {
                 stu.setCheckInDate(hssfCell.getDateCellValue());
 
 
-                hssfCell = hssfRow.getCell(6);
+                hssfCell = hssfRow.getCell(9);
                 if (hssfCell == null) {
                     continue;
                 }
                 stu.setPaymentDeadline(hssfCell.getDateCellValue());
 
-                hssfCell = hssfRow.getCell(7);
+                hssfCell = hssfRow.getCell(10);
                 if (hssfCell != null) {
                     stu.setRemarks(hssfCell.getStringCellValue());
                 }

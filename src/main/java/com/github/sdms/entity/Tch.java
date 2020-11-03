@@ -48,4 +48,10 @@ public class Tch implements Serializable {
         this.clazzId = clazzId;
     }
 
+    public Tch(String name) {
+        this.name = name;
+    }
+
+    public Tch() {
+    }
 }

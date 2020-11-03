@@ -33,20 +33,24 @@ public class FileOutput {
 
 
         hssfCell=hssfRow.createCell(3);
-        hssfCell.setCellValue("公寓名称");
+        hssfCell.setCellValue("班主任姓名");
 
 
         hssfCell=hssfRow.createCell(4);
-        hssfCell.setCellValue("宿舍编号");
+        hssfCell.setCellValue("公寓名称");
 
 
         hssfCell=hssfRow.createCell(5);
-        hssfCell.setCellValue("入住日期");
+        hssfCell.setCellValue("宿舍编号");
+
 
         hssfCell=hssfRow.createCell(6);
-        hssfCell.setCellValue("截止日期");
+        hssfCell.setCellValue("入住日期");
 
         hssfCell=hssfRow.createCell(7);
+        hssfCell.setCellValue("截止日期");
+
+        hssfCell=hssfRow.createCell(8);
         hssfCell.setCellValue("备注");
 
 
@@ -66,20 +70,25 @@ public class FileOutput {
 
 
             hssfCell=hssfRow.createCell(3);
+            hssfCell.setCellValue(stu.getTchName());
+
+            hssfCell=hssfRow.createCell(4);
             hssfCell.setCellValue(stu.getAptName());
 
 
-            hssfCell=hssfRow.createCell(4);
+            hssfCell=hssfRow.createCell(5);
             hssfCell.setCellValue(stu.getDormCode());
+
+
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-            hssfCell=hssfRow.createCell(5);
+            hssfCell=hssfRow.createCell(6);
             hssfCell.setCellValue(simpleDateFormat.format(stu.getCheckInDate()));
 
-            hssfCell=hssfRow.createCell(6);
+            hssfCell=hssfRow.createCell(7);
             hssfCell.setCellValue(simpleDateFormat.format(stu.getPaymentDeadline()));
 
-            hssfCell=hssfRow.createCell(7);
+            hssfCell=hssfRow.createCell(8);
             hssfCell.setCellValue(stu.getRemarks());
         }
 

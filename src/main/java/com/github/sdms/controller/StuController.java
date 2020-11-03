@@ -1,10 +1,11 @@
 package com.github.sdms.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.github.sdms.entity.DeadlineDate;
-import com.github.sdms.entity.Stu;
+import com.github.sdms.entity.*;
+import com.github.sdms.service.ClazzService;
 import com.github.sdms.service.DormService;
 import com.github.sdms.service.StuService;
+import com.github.sdms.service.TchService;
 import com.github.sdms.util.Constants;
 import com.github.sdms.util.FileInput;
 import com.github.sdms.util.FileOutput;
@@ -42,6 +43,13 @@ public class StuController {
 
     @Autowired
     private DormService dormService;
+
+
+    @Autowired
+    private TchService tchService;
+
+    @Autowired
+    private ClazzService clazzService;
 
     @RequestMapping("list")
     public String list(@RequestParam(defaultValue = "1", value = "p") Integer currentPage, DeadlineDate deadlineDate, String aptName, String tchName, String dormCode, String clazzCode, Model model) {
@@ -130,11 +138,25 @@ public class StuController {
                 excelUploadPath = file.getPath();
                 FileInput fileInput = new FileInput();
                 for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
+                    if (clazzService.querybycode(stuObj.getClazzCode()) == 0){
+                        Tch tch=tchService.exactQueryTch(stuObj.getTchName());
+                        if ( tch == null){
+                            tchService.insert(new Tch(stuObj.getTchName()));
+                        }
+                        tch = tchService.exactQueryTch(stuObj.getTchName());
+                        Clazz clazz=new Clazz(stuObj.getClazzCode(),tch.getId());
+                        clazzService.insert(clazz);
+                    }
                     System.out.println(stuObj);
                     // stuObj.setDormId((long) 1);
+                    if (dormService.countByANADC(stuObj.getAptName(),stuObj.getDormCode())){
+                        Dorm dorm=new Dorm(stuObj.getDormCode(),Long.valueOf(stuObj.getMonthlyRent()),stuObj.getAptName(),Integer.parseInt(stuObj.getTenantLimit()));
+                        dormService.insert(dorm);
+                    }
                     stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
                     stuService.insertStu(stuObj);
                 }
+                file.delete();
                 // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
             }
             model.addAttribute("uploadResult", "上传成功");

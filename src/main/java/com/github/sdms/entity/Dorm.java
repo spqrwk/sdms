@@ -100,4 +100,14 @@ public class Dorm implements Serializable {
                 ", stuService=" + stuService +
                 '}';
     }
+
+    public Dorm(String code, Long monthlyRent, String aptName, Integer tenantLimit) {
+        this.code = code;
+        this.monthlyRent = monthlyRent;
+        this.aptName = aptName;
+        this.tenantLimit = tenantLimit;
+    }
+
+    public Dorm() {
+    }
 }
