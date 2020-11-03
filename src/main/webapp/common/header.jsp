@@ -222,6 +222,9 @@ MAIN CONTENT LAYOUT
                             <li>
                                 <a href="${realPath}/stu/tofileupload">导入学生Excel表</a>
                             </li>
+                            <li>
+                                <a href="${realPath}/statics/xls/students.xls">下载信息模板</a>
+                            </li>
                         </ul>
                     </li>
                     <li>

@@ -43,7 +43,17 @@ $("#exportBtn").click(
             dataType: 'JSON',
             success:function(result){
                 if (result.code == '0'){
-                    alert('导出成功');
+                    window.location.href=path+"/statics/xls/"+result.filename;
+                    $.ajax({
+                        type:"GET",
+                        url:path+"/stu/delfile",
+                        data:{"filename":result.filename},
+                        dataType: 'JSON',
+                        success:function (data){
+                        },
+                        error:function(data){
+                        }
+                    })
                 }else{
                     alert('导出失败');
                 }
@@ -63,7 +73,17 @@ $("#exportAllBtn").click(
             dataType: 'JSON',
             success:function(result){
                 if (result.code == '0'){
-                    alert('导出成功');
+                    window.location.href=path+"/statics/xls/"+result.filename;
+                    $.ajax({
+                        type:"GET",
+                        url:path+"/stu/delfile",
+                        data:{"filename":result.filename},
+                        dataType: 'JSON',
+                        success:function (data){
+                        },
+                        error:function(data){
+                        }
+                    })
                 }else{
                     alert('导出失败');
                 }

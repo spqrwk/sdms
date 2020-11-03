@@ -10,19 +10,19 @@ import com.github.sdms.util.Constants;
 import com.github.sdms.util.FileInput;
 import com.github.sdms.util.FileOutput;
 import com.github.sdms.util.Page;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.*;
 
 
@@ -133,7 +133,7 @@ public class StuController {
             String excelUploadPath = null;
             if (!excelUpload.isEmpty()) {
                 String originalFilename = excelUpload.getOriginalFilename();
-                File file = new File(Constants.WIN_ROOT_DIR, originalFilename);
+                File file = new File(Constants.LINUX_ROOT_DIR, originalFilename);
                 excelUpload.transferTo(file);
                 excelUploadPath = file.getPath();
                 FileInput fileInput = new FileInput();
@@ -170,12 +170,36 @@ public class StuController {
 
     @ResponseBody
     @RequestMapping("allfileexportbylimit")
-    public String allFileExportByLimit(DeadlineDate deadlineDate, String aptName, String dormCode, String tchName, String clazzCode) {
+    public String allFileExportByLimit(DeadlineDate deadlineDate, String aptName, String dormCode, String tchName, String clazzCode, HttpServletRequest request) throws Exception {
         FileOutput fileOutput = new FileOutput();
-        fileOutput.createExcel(stuService.exportAllByLimit(deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, dormCode, tchName, clazzCode));
+        ServletContext application = request.getServletContext();
+        String realPath = application.getRealPath("/statics/xls");
+        String filename="学生信息表"+System.currentTimeMillis()+".xls";
+        File outfile = new File(realPath,filename);
+        OutputStream outputStream=new FileOutputStream(outfile);
+        fileOutput.createExcel(stuService.exportAllByLimit(deadlineDate.getStartDate(), deadlineDate.getEndDate(), aptName, dormCode, tchName, clazzCode),outputStream);
         System.out.println("公寓"+aptName+"宿舍"+dormCode+"老师"+tchName+"班级"+clazzCode);
         Map<String,String> map=new HashMap<>();
         map.put("code","0");
+        map.put("filename",filename);
         return JSON.toJSONString(map);
     }
+    @ResponseBody
+    @RequestMapping("/delfile")
+    public String delfile(String filename,HttpServletRequest request){
+        System.out.println("接收到删除请求啦");
+        ServletContext application = request.getServletContext();
+        String realPath = application.getRealPath("/statics/xls");
+        File file = new File(realPath,filename);
+        Timer timer=new Timer();//实例化Timer类
+        timer.schedule(new TimerTask(){
+            public void run(){
+                file.delete();
+                this.cancel();}},300000);//五分钟
+        Map<String,String> map = new HashMap<>();
+        map.put("code","0");
+        return JSON.toJSONString(map);
+    }
+
+
 }

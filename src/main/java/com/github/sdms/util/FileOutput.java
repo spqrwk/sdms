@@ -15,7 +15,7 @@ import java.util.List;
 public class FileOutput {
 
 
-    public void createExcel(List<Stu> stuList){
+    public void createExcel(List<Stu> stuList,OutputStream outputStream){
         System.out.println("fileoutput调用啦");
         HSSFWorkbook hssfWorkbook=new HSSFWorkbook();
         HSSFSheet hssfSheet=hssfWorkbook.createSheet("学生信息表");
@@ -93,7 +93,6 @@ public class FileOutput {
         }
 
         try {
-            OutputStream outputStream = new FileOutputStream("D:/text.xls");
             hssfWorkbook.write(outputStream);
             outputStream.close();
         } catch (Exception e) {
