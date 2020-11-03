@@ -5,10 +5,7 @@ import com.github.sdms.entity.DeadlineDate;
 import com.github.sdms.entity.Stu;
 import com.github.sdms.service.DormService;
 import com.github.sdms.service.StuService;
-import com.github.sdms.util.Constants;
-import com.github.sdms.util.FileInput;
-import com.github.sdms.util.FileOutput;
-import com.github.sdms.util.Page;
+import com.github.sdms.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
@@ -125,19 +122,24 @@ public class StuController {
             String excelUploadPath = null;
             if (!excelUpload.isEmpty()) {
                 String originalFilename = excelUpload.getOriginalFilename();
-                File file = new File(Constants.WIN_ROOT_DIR, originalFilename);
-                excelUpload.transferTo(file);
-                excelUploadPath = file.getPath();
-                FileInput fileInput = new FileInput();
-                for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
-                    System.out.println(stuObj);
-                    // stuObj.setDormId((long) 1);
-                    stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
-                    stuService.insertStu(stuObj);
+                System.out.println(originalFilename);
+                if (FileUtil.getExtensionName(originalFilename).equals("xls") || FileUtil.getExtensionName(originalFilename).equals("xlsx")) {
+                    File file = new File(Constants.WIN_ROOT_DIR, originalFilename);
+                    excelUpload.transferTo(file);
+                    excelUploadPath = file.getPath();
+                    FileInput fileInput = new FileInput();
+                    for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
+                        System.out.println(stuObj);
+                        // stuObj.setDormId((long) 1);
+                        stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
+                        stuService.insertStu(stuObj);
+                        // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
+                        model.addAttribute("uploadResult", "上传成功");
+                    }
+                } else {
+                    model.addAttribute("uploadResult", "上传失败");
                 }
-                // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
             }
-            model.addAttribute("uploadResult", "上传成功");
         } catch (Exception e) {
             model.addAttribute("uploadResult", "上传失败");
 
