@@ -6,10 +6,7 @@ import com.github.sdms.service.ClazzService;
 import com.github.sdms.service.DormService;
 import com.github.sdms.service.StuService;
 import com.github.sdms.service.TchService;
-import com.github.sdms.util.Constants;
-import com.github.sdms.util.FileInput;
-import com.github.sdms.util.FileOutput;
-import com.github.sdms.util.Page;
+import com.github.sdms.util.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -133,31 +130,33 @@ public class StuController {
             String excelUploadPath = null;
             if (!excelUpload.isEmpty()) {
                 String originalFilename = excelUpload.getOriginalFilename();
-                File file = new File(Constants.LINUX_ROOT_DIR, originalFilename);
-                excelUpload.transferTo(file);
-                excelUploadPath = file.getPath();
-                FileInput fileInput = new FileInput();
-                for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
-                    if (clazzService.querybycode(stuObj.getClazzCode()) == 0){
-                        Tch tch=tchService.exactQueryTch(stuObj.getTchName());
-                        if ( tch == null){
-                            tchService.insert(new Tch(stuObj.getTchName()));
+                if (FileUtil.getExtensionName(originalFilename).equals("xls")) {
+                    File file = new File(Constants.LINUX_ROOT_DIR, originalFilename);
+                    excelUpload.transferTo(file);
+                    excelUploadPath = file.getPath();
+                    FileInput fileInput = new FileInput();
+                    for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
+                        if (clazzService.querybycode(stuObj.getClazzCode()) == 0) {
+                            Tch tch = tchService.exactQueryTch(stuObj.getTchName());
+                            if (tch == null) {
+                                tchService.insert(new Tch(stuObj.getTchName()));
+                            }
+                            tch = tchService.exactQueryTch(stuObj.getTchName());
+                            Clazz clazz = new Clazz(stuObj.getClazzCode(), tch.getId());
+                            clazzService.insert(clazz);
                         }
-                        tch = tchService.exactQueryTch(stuObj.getTchName());
-                        Clazz clazz=new Clazz(stuObj.getClazzCode(),tch.getId());
-                        clazzService.insert(clazz);
+                        System.out.println(stuObj);
+                        // stuObj.setDormId((long) 1);
+                        if (dormService.countByANADC(stuObj.getAptName(), stuObj.getDormCode())) {
+                            Dorm dorm = new Dorm(stuObj.getDormCode(), Long.valueOf(stuObj.getMonthlyRent()), stuObj.getAptName(), Integer.parseInt(stuObj.getTenantLimit()));
+                            dormService.insert(dorm);
+                        }
+                        stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
+                        stuService.insertStu(stuObj);
                     }
-                    System.out.println(stuObj);
-                    // stuObj.setDormId((long) 1);
-                    if (dormService.countByANADC(stuObj.getAptName(),stuObj.getDormCode())){
-                        Dorm dorm=new Dorm(stuObj.getDormCode(),Long.valueOf(stuObj.getMonthlyRent()),stuObj.getAptName(),Integer.parseInt(stuObj.getTenantLimit()));
-                        dormService.insert(dorm);
-                    }
-                    stuObj.setDormId(dormService.queryDormId(stuObj.getAptName(), stuObj.getDormCode()));
-                    stuService.insertStu(stuObj);
+                    file.delete();
+                    // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
                 }
-                file.delete();
-                // stuService.insertForEach(fileInput.getStuList(new FileInputStream(excelUploadPath)));
             }
             model.addAttribute("uploadResult", "上传成功");
         } catch (Exception e) {
