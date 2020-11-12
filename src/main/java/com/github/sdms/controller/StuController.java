@@ -136,6 +136,9 @@ public class StuController {
                     excelUploadPath = file.getPath();
                     FileInput fileInput = new FileInput();
                     for (Stu stuObj : fileInput.getStuList(new FileInputStream(excelUploadPath))) {
+                        if (stuService.queryByIdNo(stuObj.getIdNo()) != 0) {
+                            continue;
+                        }
                         if (clazzService.querybycode(stuObj.getClazzCode()) == 0) {
                             Tch tch = tchService.exactQueryTch(stuObj.getTchName());
                             if (tch == null) {

@@ -146,4 +146,9 @@ public class StuServiceImpl implements StuService {
         List<Stu> stuList = stuDao.queryAllByLimit(hashMap);
         return stuList;
     }
+
+    @Override
+    public int queryByIdNo(String idNo) {
+        return stuDao.queryByIdNo(idNo);
+    }
 }

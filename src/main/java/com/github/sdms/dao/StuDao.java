@@ -63,4 +63,6 @@ public interface StuDao {
     int insertForEach(@Param("list") List<Stu> stuList);
 
     List<Stu> queryAll();
+
+    int queryByIdNo(@Param("idNo") String idNo);
 }

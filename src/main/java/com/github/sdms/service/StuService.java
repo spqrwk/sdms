@@ -64,4 +64,6 @@ public interface StuService {
     List<Stu> exportAll();
 
     List<Stu> exportAllByLimit(Date startDate, Date endDate, String aptName, String dormCode, String tchName, String clazzCode);
+
+    int queryByIdNo(String idNo);
 }

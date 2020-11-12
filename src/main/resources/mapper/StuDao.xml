@@ -107,6 +107,15 @@
             ss.id = #{id}
     </select>
 
+    <select id="queryByIdNo" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            sdms_stu
+        WHERE
+            id_no = #{idNo}
+    </select>
+
     <!--新增所有列-->
     <insert id="insert" parameterType="User">
         INSERT INTO sdms_stu(name, id_no, clazz_code, dorm_id, check_in_date, payment_deadline, remarks)
